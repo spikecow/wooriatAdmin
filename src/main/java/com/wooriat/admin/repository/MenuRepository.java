@@ -1,6 +1,6 @@
 package com.wooriat.admin.repository;
 
-import com.wooriat.admin.domain.user.TbMenu;
+import com.wooriat.admin.domain.TbMenu;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

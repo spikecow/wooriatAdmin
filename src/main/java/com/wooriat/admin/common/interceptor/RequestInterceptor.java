@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.wooriat.admin.common.utility.SessionUtil;
-import com.wooriat.admin.domain.login.LoginVo;
+import com.wooriat.admin.dto.SessionVo;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.ModelAndView;
@@ -66,14 +66,6 @@ public class RequestInterceptor extends HandlerInterceptorAdapter {
 			}
 			builder.append("============================================");
 			log.info(builder.toString());
-		}
-
-		if(!(request.getRequestURI().indexOf("/manager") < 0)) {
-			LoginVo loginVo = SessionUtil.getUserInfo(request);
-			if(!loginVo.getAuthDivCd().equals("S") ){
-				response.setStatus(403);
-				return false;
-			}
 		}
 
 		request.setAttribute("transactionTime", System.currentTimeMillis());

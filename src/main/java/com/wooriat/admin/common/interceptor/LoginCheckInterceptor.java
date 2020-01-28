@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.wooriat.admin.common.utility.SessionUtil;
 import com.wooriat.admin.constant.AdminConst;
-import com.wooriat.admin.domain.login.LoginVo;
+import com.wooriat.admin.dto.SessionVo;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
@@ -31,10 +31,10 @@ public class LoginCheckInterceptor extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 
-		LoginVo loginVo = (LoginVo) SessionUtil.get(request, AdminConst.SESSION_NAME);
+		SessionVo sessionVo = (SessionVo) SessionUtil.get(request, AdminConst.SESSION_NAME);
 
-		if (loginVo != null) {
-			request.setAttribute("userLvl", loginVo.getAuthDivCd());
+		if (sessionVo != null) {
+			request.setAttribute("userLvl", sessionVo.getAuthCd());
 			if(!(request.getRequestURI().indexOf("/admin/loginView") < 0)){
 				log.info("Already login! Redirect MainView");
 				response.sendRedirect(AdminConst.MAIN_URL);

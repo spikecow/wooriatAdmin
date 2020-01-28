@@ -1,7 +1,7 @@
 package com.wooriat.admin.service;
 
 
-import com.wooriat.admin.domain.user.TbUser;
+import com.wooriat.admin.domain.TbUser;
 import com.wooriat.admin.dto.UserDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

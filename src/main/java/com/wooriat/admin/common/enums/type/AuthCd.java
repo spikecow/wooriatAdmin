@@ -14,17 +14,17 @@ import com.wooriat.admin.common.enums.AdmEnum;
  * 
  * ========================================================================================
  */
-public enum LangCd implements AdmEnum {
+public enum AuthCd implements AdmEnum {
 	
 	//언어코드
-	KR("KR","국문"),
-	EN("EN","영문");
+	S("S","슈퍼 관리자"),
+	A("A","일반 관리자");
 	
 	private String value;
 	
 	private String description;
 	
-	private LangCd(String value, String description) {
+	private AuthCd(String value, String description) {
 		this.value = value;
 		this.description = description;
 	}

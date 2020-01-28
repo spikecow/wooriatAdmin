@@ -3,9 +3,8 @@ package com.wooriat.admin.common.utility;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import com.wooriat.admin.domain.adminuser.TbAdmUserMgt;
-import com.wooriat.admin.domain.login.LoginVo;
 import com.wooriat.admin.constant.AdminConst;
+import com.wooriat.admin.dto.SessionVo;
 import org.springframework.stereotype.Component;
 
 import lombok.extern.slf4j.Slf4j;
@@ -62,7 +61,7 @@ public class SessionUtil {
 	 */
 	public static String getLoginId(HttpServletRequest req) {
 
-		TbAdmUserMgt adminUser = null;
+		SessionVo adminUser = null;
 		HttpSession session = null;
 		session = req.getSession(false);
 		
@@ -73,7 +72,7 @@ public class SessionUtil {
 			} else {
 				log.debug("Session isNew false");
 			}
-			adminUser = (TbAdmUserMgt) session.getAttribute(AdminConst.SESSION_NAME);
+			adminUser = (SessionVo) session.getAttribute(AdminConst.SESSION_NAME);
 			
 			if (adminUser != null) {
 				adminId = adminUser.getUserId();
@@ -146,8 +145,8 @@ public class SessionUtil {
 		}
 	}
 
-	public static LoginVo getUserInfo(HttpServletRequest request){
-		LoginVo info = (LoginVo)request.getSession().getAttribute("SESSION_USERINFO");
-		return info == null?new LoginVo():info;
+	public static SessionVo getUserInfo(HttpServletRequest request){
+		SessionVo info = (SessionVo)request.getSession().getAttribute("SESSION_USERINFO");
+		return info == null?new SessionVo():info;
 	}
 }

@@ -1,4 +1,4 @@
-package com.wooriat.admin.domain.user;
+package com.wooriat.admin.domain;
 
 import lombok.Builder;
 import lombok.Getter;

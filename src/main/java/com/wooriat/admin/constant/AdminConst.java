@@ -23,11 +23,6 @@ public class AdminConst {
 
 	/** 정렬 KEY 값 */
 	public static final int    SORT_DEFAULT_SIZE_10 = 10;
-	public static final String SERVICE_SORT_KEY = "seqId";
-	public static final String PR_SORT_KEY = "prSeqId";
-	
-	/** AdminUser 정렬 KEY 값 */
-	public static final String ADMIN_USER_SORT_KEY = "cretDtm";
 
 }
 

@@ -2,8 +2,8 @@ package com.wooriat.admin.service;
 
 
 import com.wooriat.admin.common.exception.NotExistDataException;
-import com.wooriat.admin.domain.user.TbMenu;
-import com.wooriat.admin.domain.user.TbUser;
+import com.wooriat.admin.domain.TbMenu;
+import com.wooriat.admin.domain.TbUser;
 import com.wooriat.admin.dto.UserDto;
 import com.wooriat.admin.repository.MenuRepository;
 import com.wooriat.admin.repository.UserRepository;

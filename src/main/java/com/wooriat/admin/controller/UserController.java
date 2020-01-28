@@ -1,7 +1,7 @@
 package com.wooriat.admin.controller;
 
 import com.wooriat.admin.constant.AdminConst;
-import com.wooriat.admin.domain.user.TbUser;
+import com.wooriat.admin.domain.TbUser;
 import com.wooriat.admin.dto.UserDto;
 import com.wooriat.admin.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -32,7 +32,7 @@ public class UserController {
 	public ModelAndView listController(@RequestParam Map<String, Object> params, Model model,
 									   @PageableDefault(
                     size= AdminConst.SORT_DEFAULT_SIZE_10,
-                    sort="id",
+                    sort="id", //정렬 key값
                     direction = Sort.Direction.DESC) Pageable pageable) {
 		log.info("adminUserController! - Start");
 		log.info("page : {}", pageable);

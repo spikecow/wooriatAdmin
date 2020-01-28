@@ -1,6 +1,6 @@
 package com.wooriat.admin.controller;
 
-import com.wooriat.admin.domain.login.LoginVo;
+import com.wooriat.admin.dto.SessionVo;
 import com.wooriat.admin.service.LoginService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -61,7 +61,7 @@ public class LoginController {
                                       HttpServletResponse res) {
 
 
-		LoginVo loginVo = (LoginVo) req.getSession().getAttribute("SESSION_USERINFO");
+		SessionVo sessionVo = (SessionVo) req.getSession().getAttribute("SESSION_USERINFO");
 
 		HttpSession session = req.getSession();
 		if (session != null) {
@@ -70,14 +70,14 @@ public class LoginController {
 		
 		try {
 			
-			params.put("account", loginVo.getUserId());
+			params.put("account", sessionVo.getUserId());
 			loginService.logout(params);
 		}catch(Exception e) {
 			params.put("status", "fail");
 			params.put("errorMsg", e.getMessage());
 			log.error("LoginException : {}",e);
 		}
-		log.info("[Account({}) Logout  Success !!]",loginVo.getUserId());
+		log.info("[Account({}) Logout  Success !!]",sessionVo.getUserId());
 		params.put("status", "success");
 		
 		return params;

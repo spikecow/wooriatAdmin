@@ -1,5 +1,6 @@
-package com.wooriat.admin.domain.user;
+package com.wooriat.admin.domain;
 
+import com.wooriat.admin.common.enums.type.AuthCd;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -37,6 +38,10 @@ public class TbUser {
 	@Column(name = "email",unique=true, length = 100)
 	private String email;
 
+	@Column(name = "auth_cd", length = 1)
+	@Enumerated(EnumType.STRING)
+	private AuthCd authCd;
+
 	@CreationTimestamp
     @Column(name = "cret_dtm", updatable = false)
     private LocalDateTime cretDtm;
@@ -59,16 +64,20 @@ public class TbUser {
 	private List<TbMenu> userMenus = new ArrayList<>();
 
 	@Builder
-	public TbUser(Long id, String userId, String userPwd, String userNm, String deptNm, String email, List<TbMenu> userMenus, LocalDateTime lastLoginDtm) {
+	public TbUser(Long id, String userId, String userPwd, String userNm, String deptNm, String email, AuthCd authCd, List<TbMenu> userMenus) {
 
 		this.id = id;
 		this.userId = userId;
 		this.userNm = userNm;
 		this.deptNm = deptNm;
 		this.email = email;
+		this.authCd = authCd;
 		this.userPwd = userPwd;
 		this.userMenus = userMenus;
-		this.lastLoginDtm = lastLoginDtm;
+	}
+
+	public void setLastLogin(){
+		this.lastLoginDtm = LocalDateTime.now();
 	}
 
 }
