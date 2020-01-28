@@ -1,0 +1,79 @@
+package com.wooriat.admin.dto;
+
+import com.wooriat.admin.domain.user.TbMenu;
+import com.wooriat.admin.domain.user.TbUser;
+import lombok.Data;
+
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+@Data
+public class UserDto {
+
+    private Long id;
+    private String userId;
+    private String userPwd;
+    private String userNm;
+    private String deptNm;
+    private String email;
+    private List<Long> menuId;
+    private List<TbMenu> userMenus = new ArrayList<>();
+    private LocalDateTime cretDtm;
+    private LocalDateTime mdfyDtm;
+    private LocalDateTime lastLoginDtm;
+
+    public TbUser toEntity(){
+        if(menuId!= null && !menuId.isEmpty()){
+            List<TbMenu> list = new ArrayList<>();
+            for(Long menu_id: menuId){
+                list.add(TbMenu.builder().menuId(menu_id).build());
+            }
+            this.userMenus = list;
+        }
+        return TbUser.builder()
+                .id(this.id)
+                .userId(this.userId)
+                .userPwd(this.userPwd)
+                .userNm(this.userNm)
+                .email(this.email)
+                .userMenus(this.userMenus)
+                .deptNm(this.deptNm)
+                .build();
+    }
+
+    public UserDto(Optional<TbUser> tbUser) {
+        if(tbUser.isPresent()) {
+            this.id = tbUser.get().getId();
+            this.userId = tbUser.get().getUserId();
+            this.userPwd = tbUser.get().getUserPwd();
+            this.userNm = tbUser.get().getUserNm();
+            this.deptNm = tbUser.get().getDeptNm();
+            this.email = tbUser.get().getEmail();
+            this.userMenus = tbUser.get().getUserMenus();
+            this.cretDtm = tbUser.get().getCretDtm();
+            this.mdfyDtm = tbUser.get().getMdfyDtm();
+            this.lastLoginDtm = tbUser.get().getLastLoginDtm();
+        }
+    }
+
+    public UserDto toDto(UserDto userDto) {
+        if(userDto.getId() != null){            this.id = userDto.getId();                      }
+        if(userDto.getUserId() != null){        this.userId = userDto.getUserId();              }
+        if(userDto.getUserPwd() != null){       this.userPwd = userDto.getUserPwd();            }
+        if(userDto.getUserNm() != null){        this.userNm = userDto.getUserNm();              }
+        if(userDto.getDeptNm() != null){        this.deptNm = userDto.getDeptNm();              }
+        if(userDto.getEmail() != null){         this.email = userDto.getEmail();                }
+        if(userDto.getLastLoginDtm() != null){  this.lastLoginDtm = userDto.getLastLoginDtm();  }
+        if(userDto.getMenuId() != null && !userDto.getMenuId().isEmpty()){
+            List<TbMenu> list = new ArrayList<>();
+            for(Long menu_id: userDto.getMenuId()){
+                list.add(TbMenu.builder().menuId(menu_id).build());
+            }
+            this.userMenus = list;
+        }
+
+        return userDto;
+    }
+}

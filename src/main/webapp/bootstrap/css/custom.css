@@ -1,0 +1,55 @@
+/* bootstrap coustom css*/
+/* http://blog.koalite.com/bbg/ */ 
+
+/*S: button -------------------------------------------------------------*/
+.btn-violet { 
+  color: #ffffff; 
+  background-color: #611BBD; 
+  border-color: #130269; 
+} 
+ 
+.btn-violet:hover, 
+.btn-violet:focus, 
+.btn-violet:active, 
+.btn-violet.active, 
+.open .dropdown-toggle.btn-violet { 
+  color: #ffffff; 
+  background-color: #49247A; 
+  border-color: #130269; 
+} 
+ 
+.btn-violet:active, 
+.btn-violet.active, 
+.open .dropdown-toggle.btn-violet { 
+  background-image: none; 
+} 
+ 
+.btn-violet.disabled, 
+.btn-violet[disabled], 
+fieldset[disabled] .btn-violet, 
+.btn-violet.disabled:hover, 
+.btn-violet[disabled]:hover, 
+fieldset[disabled] .btn-violet:hover, 
+.btn-violet.disabled:focus, 
+.btn-violet[disabled]:focus, 
+fieldset[disabled] .btn-violet:focus, 
+.btn-violet.disabled:active, 
+.btn-violet[disabled]:active, 
+fieldset[disabled] .btn-violet:active, 
+.btn-violet.disabled.active, 
+.btn-violet[disabled].active, 
+fieldset[disabled] .btn-violet.active { 
+  background-color: #611BBD; 
+  border-color: #130269; 
+} 
+ 
+.btn-violet .badge { 
+  color: #611BBD; 
+  background-color: #ffffff; 
+}
+
+/*E: button -------------------------------------------------------------*/
+
+/*S: Double modal close mouse wheel fixed issue  ------------------------*/
+.modal { overflow: auto !important; }
+/*E: Double modal close mouse wheel fixed issue  ------------------------*/
