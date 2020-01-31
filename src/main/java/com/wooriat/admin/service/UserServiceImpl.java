@@ -40,7 +40,7 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public TbUser update(UserDto userDto) {
 
-        UserDto dto = new UserDto(userRepository.findById(userDto.getId()));
+        UserDto dto = new UserDto(userRepository.findById(userDto.getUid()));
         dto.toDto(userDto);
         return userRepository.save(dto.toEntity());
     }
@@ -53,7 +53,7 @@ public class UserServiceImpl implements UserService {
         if(!byId.isPresent()){
             throw new NotExistDataException("존재하지 않는 데이터 입니다.");
         }
-        userRepository.deleteById(byId.get().getId());
+        userRepository.deleteById(byId.get().getUid());
     }
 
     @Override

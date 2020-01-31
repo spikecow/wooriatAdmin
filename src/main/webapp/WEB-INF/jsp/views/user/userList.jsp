@@ -108,26 +108,26 @@
                                 <tbody>
                                 <c:forEach items="${list.content}" var="list" varStatus="status">
                                     <tr class="text-center">
-                                        <td><%--${fn:length(list.content)-status.index}--%></td>
-                                        <td style = "cursor:pointer;" onClick = "location.href='/user/detail/${ list.id }' ">
+                                        <td>${(totalCount - status.index) - ( (page - 1)  *  10 ) }</td>
+                                        <td style = "cursor:pointer;" onClick = "location.href='/user/detail/${ list.uid }' ">
                                             <%--<button name="btnViewDetail" style="border: 0px; background-color: rgba(255,255,255,0.5); color: black;" class="btn btn-danger btn-sm" data-id="${ list.id }">메뉴관리</button>--%>
                                             <c:forEach items="${list.userMenus}" var="menu" varStatus="menu_status">
                                                 ${menu.menuNm}<c:if test="${!menu_status.last}">, </c:if>
                                             </c:forEach>
                                         </td>
-                                        <td style = "cursor:pointer;" onClick = "location.href='/user/detail/${ list.id }' ">
+                                        <td style = "cursor:pointer;" onClick = "location.href='/user/detail/${ list.uid }' ">
                                                 ${list.userNm}
                                         </td>
-                                        <td style = "cursor:pointer;" onClick = "location.href='/user/detail/${ list.id }' ">
+                                        <td style = "cursor:pointer;" onClick = "location.href='/user/detail/${ list.uid }' ">
                                                 ${list.email}
                                         </td>
                                         <td>
                                             <fmt:parseDate value="${ list.cretDtm }" pattern="yyyy-MM-dd'T'HH:mm" var="cretDtm" type="both" />
-                                            <fmt:formatDate pattern="yyyy.MM.dd" value="${ cretDtm }" />
+                                            <fmt:formatDate pattern="yyyy-MM-dd" value="${ cretDtm }" />
                                         </td>
                                         <td>
                                             <fmt:parseDate value="${ list.lastLoginDtm }" pattern="yyyy-MM-dd'T'HH:mm" var="lastLoginDtm" type="both" />
-                                            <fmt:formatDate pattern="yyyy.MM.dd" value="${ lastLoginDtm }" />
+                                            <fmt:formatDate pattern="yyyy-MM-dd" value="${ lastLoginDtm }" />
                                         </td>
                                     </tr>
 

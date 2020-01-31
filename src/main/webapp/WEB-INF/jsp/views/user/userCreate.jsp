@@ -65,7 +65,7 @@
         <!-- Main content -->
         <section class="content">
             <form id="form">
-                <input type="hidden" name="id" id="id" value="${data.id}"/>
+                <input type="hidden" name="uid" id="id" value="${data.uid}"/>
                 <input type="hidden" name="authCd" id="authCd" value="A"/>
             <div class="row">
                 <div class="col-xs-12">
@@ -163,7 +163,7 @@
             </div>
             <div class="row">
                 <div class="col-sm-12 text-right">
-                    <button name="btnCancel" type="button" class="btn btn-info btn-group-sm" data-id="${ data.id }" >취소</button>
+                    <button name="btnCancel" type="button" class="btn btn-info btn-group-sm" data-id="${ data.uid }" >취소</button>
                     <button name="btnRegist" type="submit" class="btn btn-info btn-group-sm" >등록</button>
                 </div>
             </div>
@@ -213,7 +213,7 @@
                 if(type == 'POST'){
                     location.href = "/user/list/";
                 }else{
-                    location.href = "/user/detail/"+result.id;
+                    location.href = "/user/detail/"+result.uid;
                 }
 
             }).fail(function(xhr, textStatus, errorThrown) {

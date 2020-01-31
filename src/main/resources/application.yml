@@ -31,16 +31,16 @@ spring:
       prefix: /WEB-INF/jsp/views/
       suffix: .jsp
   datasource:
-    url: jdbc:postgresql://112.217.179.250:25432/homedb
-    username: "dbmaster"
-    password: "!dbmaster!"
-    driver-class-name: org.postgresql.Driver
+    url: jdbc:sqlserver://211.232.50.135:1433;databaseName=WOORIAT
+    username: "wooriat"
+    password: "woori_at_1234$#@!"
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
   jpa:
     hibernate:
       ddl-auto: update
-#      naming:
-#        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
-#        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
       naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
     properties:
       hibernate:

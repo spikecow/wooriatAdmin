@@ -8,8 +8,11 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -20,8 +23,8 @@ public class TbUser {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private Long id;
+	@Column(name = "uid")
+	private Long uid;
 
 	@Column(name = "user_id", length = 100, unique=true, nullable = false)
 	private String userId;
@@ -58,15 +61,15 @@ public class TbUser {
 
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "tb_user_menu",
-			joinColumns = @JoinColumn(name = "id"),
+			joinColumns = @JoinColumn(name = "uid"),
 			inverseJoinColumns = @JoinColumn(name = "menu_id")
 	)
 	private List<TbMenu> userMenus = new ArrayList<>();
 
 	@Builder
-	public TbUser(Long id, String userId, String userPwd, String userNm, String deptNm, String email, AuthCd authCd, List<TbMenu> userMenus) {
+	public TbUser(Long uid, String userId, String userPwd, String userNm, String deptNm, String email, AuthCd authCd, List<TbMenu> userMenus, LocalDateTime lastLoginDtm) {
 
-		this.id = id;
+		this.uid = uid;
 		this.userId = userId;
 		this.userNm = userNm;
 		this.deptNm = deptNm;
@@ -74,6 +77,7 @@ public class TbUser {
 		this.authCd = authCd;
 		this.userPwd = userPwd;
 		this.userMenus = userMenus;
+		this.lastLoginDtm = lastLoginDtm;
 	}
 
 	public void setLastLogin(){

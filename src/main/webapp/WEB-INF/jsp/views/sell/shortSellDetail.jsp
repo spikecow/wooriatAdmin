@@ -79,27 +79,44 @@
                                 <tbody>
                                     <tr>
                                         <th class="text-center">제목</th>
-                                        <td></td>
+                                        <td>${data.newsTitle}</td>
                                     </tr>
 
                                     <tr>
                                         <th class="text-center">등록일</th>
-                                        <td></td>
+                                        <td>
+                                            ${data.regDateInput}
+                                        </td>
                                     </tr>
 
                                     <tr>
                                         <th class="text-center">진행상황</th>
-                                        <td></td>
+                                        <td>${data.sortStatus}</td>
                                     </tr>
 
                                     <tr>
                                         <th class="text-center">PDF 파일첨부</th>
-                                        <td></td>
+                                        <td>${data.insertFile1}</td>
                                     </tr>
 
                                     <tr>
                                         <th class="text-center">첨부2</th>
-                                        <td></td>
+                                        <td>${data.insertFile2}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <th class="text-center">첨부3</th>
+                                        <td>${data.insertFile3}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <th class="text-center">첨부4</th>
+                                        <td>${data.insertFile4}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <th class="text-center">첨부5</th>
+                                        <td>${data.insertFile5}</td>
                                     </tr>
                             </table>
                         </div>
@@ -109,10 +126,10 @@
             </div>
             <div class="row">
                 <div class="col-xs-6 text-left">
-                    <button name="btnDelete" type="button" class="btn btn-info btn-group-sm" data-id="${ data.id }" >삭제</button>
+                    <button name="btnDelete" type="button" class="btn btn-info btn-group-sm" data-id="${ data.sellId }" >삭제</button>
                 </div>
                 <div class="col-xs-6 text-right">
-                    <button name="btnCreate" type="button" class="btn btn-info btn-group-sm" data-id="${ data.id }" >수정</button>
+                    <button name="btnCreate" type="button" class="btn btn-info btn-group-sm" data-id="${ data.sellId }" >수정</button>
                     <button name="btnList" type="button" class="btn btn-info btn-group-sm" >목록</button>
                 </div>
             </div>
@@ -126,7 +143,7 @@
 
         $('button[name=btnDelete]').on('click', function () {
             $.ajax({
-                url : '/null/delete/'+$(this).attr('data-id'),
+                url : '/ShortSell/delete/'+$(this).attr('data-id'),
                 async: true,
                 cache: false,
                 contentType: 'application/json',
@@ -145,7 +162,7 @@
                 }
 
                 alert('삭제 되었습니다.');
-                location.href = "/user/list";
+                location.href = "/ShortSell/list";
             }).fail(function(xhr, textStatus, errorThrown) {
                 if(xhr.status =='403'){
                     alert("해당 기능에 대한 권한이 없습니다.");
@@ -154,11 +171,11 @@
         });
 
         $('button[name=btnCreate]').on('click', function () {
-            //location.href = "/user/updateForm/"+$(this).attr('data-id');
+            location.href = "/ShortSell/updateForm/"+$(this).attr('data-id');
         });
 
         $('button[name=btnList]').on('click', function () {
-            //location.href = "/user/list";
+            location.href = "/ShortSell/list";
         });
     </script>
 

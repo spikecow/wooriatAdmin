@@ -6,7 +6,6 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
-
 	<aside class="main-sidebar">
 		<section class="sidebar">
 			<ul class="sidebar-menu active">
@@ -19,7 +18,16 @@
 					</a>
 				</li>
 				</c:if>
-				
+				<li class="treeview" data-uri="/admin">
+					<a href="/SaleItem/list">
+						<i class="fa fa-users"></i> <span>분양물건정보</span>
+					</a>
+				</li>
+				<li class="treeview" data-uri="/admin">
+					<a href="/ShortSell/list">
+						<i class="fa fa-users"></i> <span>공매물건정보</span>
+					</a>
+				</li>
 			</ul>
 		</section>
 	</aside>

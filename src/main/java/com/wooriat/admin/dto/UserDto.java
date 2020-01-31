@@ -13,7 +13,7 @@ import java.util.Optional;
 @Data
 public class UserDto {
 
-    private Long id;
+    private Long uid;
     private String userId;
     private String userPwd;
     private String userNm;
@@ -35,7 +35,7 @@ public class UserDto {
             this.userMenus = list;
         }
         return TbUser.builder()
-                .id(this.id)
+                .uid(this.uid)
                 .userId(this.userId)
                 .userPwd(this.userPwd)
                 .userNm(this.userNm)
@@ -48,7 +48,7 @@ public class UserDto {
 
     public UserDto(Optional<TbUser> tbUser) {
         if(tbUser.isPresent()) {
-            this.id = tbUser.get().getId();
+            this.uid = tbUser.get().getUid();
             this.userId = tbUser.get().getUserId();
             this.userPwd = tbUser.get().getUserPwd();
             this.userNm = tbUser.get().getUserNm();
@@ -63,7 +63,7 @@ public class UserDto {
     }
 
     public UserDto toDto(UserDto userDto) {
-        if(userDto.getId() != null){                                                this.id = userDto.getId();                      }
+        if(userDto.getUid() != null){                                                this.uid = userDto.getUid();                      }
         if(userDto.getUserId() != null){                                            this.userId = userDto.getUserId();              }
         if(userDto.getUserPwd() != null && !userDto.getUserPwd().equals("")){       this.userPwd = userDto.getUserPwd();            }
         if(userDto.getUserNm() != null){                                            this.userNm = userDto.getUserNm();              }

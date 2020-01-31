@@ -14,7 +14,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>분양물건정보 (목록)</title>
+<title>공매물건정보 (목록)</title>
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
 <%--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">--%>
@@ -75,17 +75,18 @@
                         <div class="box-body text-right">
                             <form id="reqForm" class="form-inline col-md">
                                 <span>진행상황&emsp;</span>
-                                <select class="form-control" name="">
-                                    <option value="">진행</option>
-                                    <option value="">중지</option>
-                                    <option value="">취소</option>
-                                    <option value="">낙찰</option>
-                                    <option value="">일부낙찰</option>
-                                    <option value="">공지</option>
-                                    <option value="">유찰</option>
-                                    <option value="">종료</option>
-                                    <option value="">수의계약진행</option>
-                                    <option value="">수의계약완료</option>
+                                <select class="form-control" name="sortStatus" id="sortStatus">
+                                    <option value="">전체</option>
+                                    <option value="진행">진행</option>
+                                    <option value="중지">중지</option>
+                                    <option value="취소">취소</option>
+                                    <option value="낙찰">낙찰</option>
+                                    <option value="일부낙찰">일부낙찰</option>
+                                    <option value="공지">공지</option>
+                                    <option value="유찰">유찰</option>
+                                    <option value="종료">종료</option>
+                                    <option value="수의계약진행">수의계약진행</option>
+                                    <option value="수의계약완료">수의계약완료</option>
                                 </select>
                                 <input style="width: 400px;" type="text" id="searchWord" name="searchWord" class="form-control" placeholder="검색어를 입력해 주세요." />
                                     <button type="button" id="reqFormSubmit" class="btn btn-warning btn-group-sm" data-type="web">검색</button>
@@ -101,12 +102,12 @@
                             <table class="table table-striped" id="regionTable">
                             	<colgroup>
                             		<col width="5%">
-                            		<col width="15%">
-                            		<col width="35%">
                             		<col width="10%">
-                                    <col width="10%">
-                            		<col width="10%">
-                            		<col width="10%">
+                            		<col width="54%">
+                            		<col width="5%">
+                                    <col width="7%">
+                            		<col width="7%">
+                            		<col width="7%">
                                     <col width="5%">
                             	</colgroup>
                             	
@@ -122,18 +123,20 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                <c:forEach items="${list.content}" var="list" varStatus="status">
                                     <tr class="text-center">
-                                        <td><%--${fn:length(list.content)-status.index}--%></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td>${(totalCount - status.index) - ( (page - 1)  *  10 ) }</td>
+                                        <td>${list.sortStatus}</td>
+                                        <td style = "cursor:pointer; text-align: left" onClick = "location.href='/ShortSell/detail/${ list.sellId }' ">${list.newsTitle}</td>
+                                        <td><c:if test="${!empty list.insertFile1}">O</c:if></td>
+                                        <td>${list.userInfo.userNm}</td>
                                         <td>
-                                            <%--<fmt:parseDate value="${ list.cretDtm }" pattern="yyyy-MM-dd'T'HH:mm" var="cretDtm" type="both" />
-                                            <fmt:formatDate pattern="yyyy.MM.dd" value="${ cretDtm }" />--%>
+                                            <fmt:parseDate value="${ list.regDate }" pattern="yyyy-MM-dd'T'HH:mm" var="regDate" type="both" />
+                                            <fmt:formatDate pattern="yyyy-MM-dd" value="${ regDate }" />
                                         </td>
-                                        <td></td>
+                                        <td>${list.clickCnt}</td>
                                     </tr>
+                                </c:forEach>
                                 </tbody>
                             </table>
                         </div>
@@ -177,14 +180,25 @@
             });
 
             $('input[name=searchWord]').val(prevSearchWord);
+            $('#sortStatus option[value="${sortStatus}"]').attr('selected','selected');
         });
 
         $('button[name=btnRegist]').on('click', function () {
-            //location.href = "/user/createForm/"
+            location.href = "/ShortSell/createForm/"
         });
 
         $('button[name=btnViewDetail]').on('click', function () {
-            //location.href = "/user/detail/"+$(this).attr('data-id');
+            location.href = "/ShortSell/detail/"+$(this).attr('data-id');
+        });
+
+        /*검색*/
+        $('form#reqForm button').on('click', function () {
+            $('form#reqForm').attr('action', document.location.pathname);
+            if (prevSearchWord != $('input[name=searchWord]').val()) {
+                $('#reqForm input[name=page]').val(0);
+                $('#reqForm input[name=size]').val(10);
+            }
+            $('form#reqForm').submit();
         });
     </script>
     

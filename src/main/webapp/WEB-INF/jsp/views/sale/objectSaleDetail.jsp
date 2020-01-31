@@ -82,123 +82,168 @@
                                 <tbody>
                                     <tr>
                                         <th class="text-center">사업명</th>
-                                        <td colspan="3"></td>
+                                        <td colspan="3">${data.bunName}</td>
                                     </tr>
 
                                     <tr>
                                         <th class="text-center">담당팀</th>
-                                        <td colspan="3"></td>
+                                        <td colspan="3">${data.team}</td>
                                     </tr>
 
                                     <tr>
                                         <th class="text-center">사업상태</th>
-                                        <td colspan="3"></td>
+                                        <td colspan="3">
+                                            <c:if test="${data.status eq '1'.toString()}">진행</c:if>
+                                            <c:if test="${data.status eq '2'.toString()}">완료</c:if>
+                                            <c:if test="${data.status eq '0'.toString()}">예정</c:if>
+                                        </td>
                                     </tr>
 
                                     <tr>
                                         <th class="text-center">분양방식</th>
-                                        <td colspan="3"></td>
+                                        <td colspan="3">
+                                            <c:if test="${data.bizType eq '1'.toString()}">분양관리신탁</c:if>
+                                            <c:if test="${data.bizType eq '2'.toString()}">관리형토지신탁</c:if>
+                                            <c:if test="${data.bizType eq '3'.toString()}">일반분양</c:if>
+                                            <c:if test="${data.bizType eq '4'.toString()}">선착순분양</c:if>
+                                            <c:if test="${data.bizType eq '5'.toString()}">공개추첨</c:if>
+                                            <c:if test="${data.bizType eq '6'.toString()}">공개추첨후수의분양</c:if>
+                                            <c:if test="${data.bizType eq '7'.toString()}">대리사무/담보신탁</c:if>
+                                            <c:if test="${data.bizType eq '8'.toString()}">관리신탁/자금관리</c:if>
+                                            <c:if test="${data.bizType eq '9'.toString()}">차입형토지신탁</c:if>
+                                            <c:if test="${data.bizType eq '10'.toString()}">기타</c:if>
+                                        </td>
                                     </tr>
 
                                     <tr>
                                         <th class="text-center">사업종류</th>
-                                        <td colspan="3"></td>
+                                        <td colspan="3">
+                                            <c:if test="${data.bizCase eq 'A'.toString()}">아파트</c:if>
+                                            <c:if test="${data.bizCase eq 'F'.toString()}">아파트형공장</c:if>
+                                            <c:if test="${data.bizCase eq 'O'.toString()}">오피스텔</c:if>
+                                            <c:if test="${data.bizCase eq 'P'.toString()}">오피스텔/상가</c:if>
+                                            <c:if test="${data.bizCase eq 'M'.toString()}">오피스/상가</c:if>
+                                            <c:if test="${data.bizCase eq 'D'.toString()}">도시형생활주택</c:if>
+                                            <c:if test="${data.bizCase eq 'U'.toString()}">도시형생활주택/오피스텔</c:if>
+                                            <c:if test="${data.bizCase eq 'J'.toString()}">주상복합</c:if>
+                                            <c:if test="${data.bizCase eq 'G'.toString()}">골프장</c:if>
+                                            <c:if test="${data.bizCase eq 'S'.toString()}">상가</c:if>
+                                            <c:if test="${data.bizCase eq 'T'.toString()}">타운하우스</c:if>
+                                            <c:if test="${data.bizCase eq 'R'.toString()}">리조트</c:if>
+                                            <c:if test="${data.bizCase eq 'L'.toString()}">토지</c:if>
+                                            <c:if test="${data.bizCase eq 'K'.toString()}">지식산업센터</c:if>
+                                            <c:if test="${data.bizCase eq 'N'.toString()}">아파트/오피스텔</c:if>
+                                            <c:if test="${data.bizCase eq 'Q'.toString()}">생활숙박시설</c:if>
+                                            <%--<c:if test="${data.bizCase eq 'S'.toString()}">오피스텔/오피스</c:if>--%>
+                                            <c:if test="${data.bizCase eq 'Z'.toString()}">기타</c:if>
+                                        </td>
                                     </tr>
 
                                     <tr>
                                         <th class="text-center">분양시기</th>
-                                        <td></td>
+                                        <td>
+                                            <fmt:parseDate value="${ data.bunDate }" pattern="yyyy-MM-dd'T'HH:mm" var="bunDate" type="both" />
+                                            <fmt:formatDate pattern="yyyy-MM-dd" value="${ bunDate }" />
+                                        </td>
                                         <th class="text-center">입주시기</th>
-                                        <td></td>
+                                        <td>
+                                            <fmt:parseDate value="${ data.ipDate }" pattern="yyyy-MM-dd'T'HH:mm" var="ipDate" type="both" />
+                                            <fmt:formatDate pattern="yyyy-MM-dd" value="${ ipDate }" />
+                                        </td>
                                     </tr>
 
                                     <tr>
                                         <th class="text-center">위치</th>
-                                        <td colspan="3"></td>
+                                        <td colspan="3">${data.address} ${data.etcAddress}</td>
                                     </tr>
 
                                     <tr>
                                         <th class="text-center">시공사</th>
-                                        <td colspan="3"></td>
+                                        <td colspan="3">${data.sgOffice}</td>
                                     </tr>
 
                                     <tr>
                                         <th class="text-center">위탁사</th>
-                                        <td colspan="3"></td>
+                                        <td colspan="3">${data.siOffice}</td>
                                     </tr>
 
                                     <tr>
                                         <th class="text-center">금융사</th>
-                                        <td colspan="3"></td>
+                                        <td colspan="3">${data.bankOffice}</td>
                                     </tr>
 
                                     <tr>
                                         <th class="text-center">건폐율</th>
-                                        <td></td>
+                                        <td>${data.gunPer} %</td>
                                         <th class="text-center">용적률</th>
-                                        <td></td>
+                                        <td>${data.yungPer} %</td>
                                     </tr>
 
                                     <tr>
                                         <th class="text-center">건축면적</th>
-                                        <td></td>
+                                        <td>${data.constArea} ㎡</td>
                                         <th class="text-center">대지면적</th>
-                                        <td></td>
+                                        <td>${data.landArea} ㎡</td>
                                     </tr>
 
                                     <tr>
                                         <th class="text-center">연면적</th>
-                                        <td colspan="3"></td>
+                                        <td colspan="3">${data.pyung} ㎡</td>
                                     </tr>
 
                                     <tr>
                                         <th class="text-center">사업규모</th>
-                                        <td colspan="3"></td>
+                                        <td colspan="3">${data.scale}</td>
                                     </tr>
 
                                     <tr>
                                         <th class="text-center">총세대수</th>
-                                        <td colspan="3"></td>
+                                        <td colspan="3">${data.totalSedae}</td>
                                     </tr>
 
                                     <tr>
                                         <th class="text-center">분양세대수</th>
-                                        <td colspan="3"></td>
+                                        <td colspan="3">${data.bunSedae}</td>
                                     </tr>
 
                                     <tr>
                                         <th class="text-center">주차대수</th>
-                                        <td colspan="3"></td>
+                                        <td colspan="3">${data.parkn}</td>
                                     </tr>
 
                                     <tr>
                                         <th class="text-center">난방방식</th>
-                                        <td colspan="3"></td>
+                                        <td colspan="3">
+                                            <c:if test="${data.hotWay eq '1'.toString()}">지역난방</c:if>
+                                            <c:if test="${data.hotWay eq '2'.toString()}">개별난방</c:if>
+                                            <c:if test="${data.hotWay eq '3'.toString()}">중앙난방</c:if>
+                                            <c:if test="${data.hotWay eq '10'.toString()}">기타</c:if>
+                                        </td>
                                     </tr>
 
                                     <tr>
                                         <th class="text-center">구조</th>
-                                        <td colspan="3"></td>
+                                        <td colspan="3">${data.construction}</td>
                                     </tr>
 
                                     <tr>
                                         <th class="text-center">연락처</th>
-                                        <td colspan="3"></td>
+                                        <td colspan="3">${data.reqTel}</td>
                                     </tr>
 
                                     <tr>
                                         <th class="text-center">사업자홈페이지</th>
-                                        <td colspan="3"></td>
+                                        <td colspan="3">${data.homePage}</td>
                                     </tr>
 
                                     <tr>
                                         <th class="text-center">시행사홈페이지</th>
-                                        <td colspan="3"></td>
+                                        <td colspan="3">${data.sigongHomePage}</td>
                                     </tr>
 
                                     <tr>
                                         <th class="text-center">건설사홈페이지</th>
-                                        <td colspan="3"></td>
+                                        <td colspan="3">${data.constHomePage}</td>
                                     </tr>
 
                                 </tbody>
@@ -222,23 +267,23 @@
                                 <tbody>
                                     <tr>
                                         <th class="text-center">전체</th>
-                                        <td></td>
+                                        <td>${data.progress6} %</td>
                                         <th class="text-center">가설공사</th>
-                                        <td></td>
+                                        <td>${data.progress1} %</td>
                                     </tr>
 
                                     <tr>
                                         <th class="text-center">건축공사</th>
-                                        <td></td>
+                                        <td>${data.progress2} %</td>
                                         <th class="text-center">토목공사</th>
-                                        <td></td>
+                                        <td>${data.progress3} %</td>
                                     </tr>
 
                                     <tr>
                                         <th class="text-center">전기공사</th>
-                                        <td></td>
+                                        <td>${data.progress4} %</td>
                                         <th class="text-center">설비공사</th>
-                                        <td></td>
+                                        <td>${data.progress5} %</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -260,12 +305,12 @@
                                 <tbody>
                                     <tr>
                                         <th class="text-center">목록이미지</th>
-                                        <td colspan="3"></td>
+                                        <td colspan="3"><a herf="/SaleItem/Photo/${data.NPhoto1}">${data.NPhoto1}</a></td>
                                     </tr>
 
                                     <tr>
                                         <th class="text-center">상세페이지 이미지</th>
-                                        <td colspan="3"></td>
+                                        <td colspan="3"><a herf="/SaleItem/Photo/${data.NPhoto2}">${data.NPhoto2}</a></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -282,10 +327,12 @@
                                 </colgroup>
 
                                 <tbody>
-                                <tr>
-                                    <td>없음</td>
-                                </tr>
-
+                                    <tr>
+                                        <td>
+                                            <c:if test="${empty data.memo }">없음</c:if>
+                                            ${data.memo}
+                                        </td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -295,10 +342,10 @@
             </div>
             <div class="row">
                 <div class="col-xs-6 text-left">
-                    <button name="btnDelete" type="button" class="btn btn-info btn-group-sm" data-id="${ data.id }" >삭제</button>
+                    <button name="btnDelete" type="button" class="btn btn-info btn-group-sm" data-id="${ data.saleId }" >삭제</button>
                 </div>
                 <div class="col-xs-6 text-right">
-                    <button name="btnCreate" type="button" class="btn btn-info btn-group-sm" data-id="${ data.id }" >수정</button>
+                    <button name="btnCreate" type="button" class="btn btn-info btn-group-sm" data-id="${ data.saleId }" >수정</button>
                     <button name="btnList" type="button" class="btn btn-info btn-group-sm" >목록</button>
                 </div>
             </div>
@@ -312,7 +359,7 @@
 
         $('button[name=btnDelete]').on('click', function () {
             $.ajax({
-                url : '/user/delete/'+$(this).attr('data-id'),
+                url : '/SaleItem/delete/'+$(this).attr('data-id'),
                 async: true,
                 cache: false,
                 contentType: 'application/json',
@@ -331,7 +378,7 @@
                 }
 
                 alert('삭제 되었습니다.');
-                location.href = "/user/list";
+                location.href = "/sale/list";
             }).fail(function(xhr, textStatus, errorThrown) {
                 if(xhr.status =='403'){
                     alert("해당 기능에 대한 권한이 없습니다.");
@@ -340,11 +387,11 @@
         });
 
         $('button[name=btnCreate]').on('click', function () {
-            location.href = "/user/updateForm/"+$(this).attr('data-id');
+            location.href = "/SaleItem/updateForm/"+$(this).attr('data-id');
         });
 
         $('button[name=btnList]').on('click', function () {
-            location.href = "/user/list";
+            location.href = "/SaleItem/list";
         });
     </script>
 

@@ -75,39 +75,40 @@
                         <div class="box-body text-right">
                             <form id="reqForm" class="form-inline col-md">
                                 <span>상태&emsp;</span>
-                                <select class="form-control" name="" >
+                                <select class="form-control" name="status" id="status">
                                     <option value="">전체</option>
-                                    <option value="">완료</option>
-                                    <option value="">진행</option>
-                                    <option value="">예정</option>
+                                    <option value="2">완료</option>
+                                    <option value="1">진행</option>
+                                    <option value="0">예정</option>
                                 </select>
-                                <span>&emsp;|&emsp;공적률&emsp;</span>
-                                <select class="form-control" name="" >
+                                <span>&emsp;|&emsp;공정률&emsp;</span>
+                                <select class="form-control" name="progress6" id="progress6">
                                     <option value="">전체</option>
-                                    <option value="">0~50%</option>
-                                    <option value="">50~90%</option>
-                                    <option value="">100%</option>
+                                    <option value="50">0~50%</option>
+                                    <option value="90">50~90%</option>
+                                    <option value="100">100%</option>
                                 </select>
                                 <span>&emsp;|&emsp;사업종류&emsp;</span>
-                                <select class="form-control" name="" >
-                                    <option value="">아파트</option>
-                                    <option value="">아파트형공장</option>
-                                    <option value="">오피스텔</option>
-                                    <option value="">오피스텔/상가</option>
-                                    <option value="">오피스/상가</option>
-                                    <option value="">도시형생활주택</option>
-                                    <option value="">도시형생활주택/오피스텔</option>
-                                    <option value="">주상복합</option>
-                                    <option value="">골프장</option>
-                                    <option value="">상가</option>
-                                    <option value="">타운하우스</option>
-                                    <option value="">리조트</option>
-                                    <option value="">토지</option>
-                                    <option value="">지식산업센터</option>
-                                    <option value="">아파트/오피스텔</option>
-                                    <option value="">생활숙박시설</option>
-                                    <option value="">오피스텔/오피스</option>
-                                    <option value="">기타</option>
+                                <select class="form-control" name="bizCase" id="bizCase">
+                                    <option value="">전체</option>
+                                    <option value="A">아파트</option>
+                                    <option value="F">아파트형공장</option>
+                                    <option value="O">오피스텔</option>
+                                    <option value="P">오피스텔/상가</option>
+                                    <option value="M">오피스/상가</option>
+                                    <option value="D">도시형생활주택</option>
+                                    <option value="U">도시형생활주택/오피스텔</option>
+                                    <option value="J">주상복합</option>
+                                    <option value="G">골프장</option>
+                                    <option value="S">상가</option>
+                                    <option value="T">타운하우스</option>
+                                    <option value="R">리조트</option>
+                                    <option value="L">토지</option>
+                                    <option value="K">지식산업센터</option>
+                                    <option value="N">아파트/오피스텔</option>
+                                    <option value="Q">생활숙박시설</option>
+                                    <option value="S">오피스텔/오피스</option>
+                                    <option value="Z">기타</option>
                                 </select>
                                 <input style="width: 400px;" type="text" id="searchWord" name="searchWord" class="form-control" placeholder="검색어를 입력해 주세요." />
                                     <button type="button" id="reqFormSubmit" class="btn btn-warning btn-group-sm" data-type="web">검색</button>
@@ -123,12 +124,12 @@
                             <table class="table table-striped" id="regionTable">
                             	<colgroup>
                             		<col width="5%">
-                            		<col width="15%">
-                            		<col width="35%">
-                            		<col width="10%">
-                                    <col width="10%">
-                            		<col width="10%">
-                            		<col width="10%">
+                            		<col width="12%">
+                            		<col width="50%">
+                            		<col width="7%">
+                                    <col width="7%">
+                            		<col width="7%">
+                            		<col width="7%">
                                     <col width="5%">
                             	</colgroup>
                             	
@@ -145,19 +146,44 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                <c:forEach items="${list.content}" var="list" varStatus="status">
                                     <tr class="text-center">
-                                        <td><%--${fn:length(list.content)-status.index}--%></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td>${(totalCount - status.index) - ( (page - 1)  *  10 ) }</td>
                                         <td>
-                                            <%--<fmt:parseDate value="${ list.cretDtm }" pattern="yyyy-MM-dd'T'HH:mm" var="cretDtm" type="both" />
-                                            <fmt:formatDate pattern="yyyy.MM.dd" value="${ cretDtm }" />--%>
+                                            <c:if test="${list.bizCase eq 'A'.toString()}">아파트</c:if>
+                                            <c:if test="${list.bizCase eq 'F'.toString()}">아파트형공장</c:if>
+                                            <c:if test="${list.bizCase eq 'O'.toString()}">오피스텔</c:if>
+                                            <c:if test="${list.bizCase eq 'P'.toString()}">오피스텔/상가</c:if>
+                                            <c:if test="${list.bizCase eq 'M'.toString()}">오피스/상가</c:if>
+                                            <c:if test="${list.bizCase eq 'D'.toString()}">도시형생활주택</c:if>
+                                            <c:if test="${list.bizCase eq 'U'.toString()}">도시형생활주택/오피스텔</c:if>
+                                            <c:if test="${list.bizCase eq 'J'.toString()}">주상복합</c:if>
+                                            <c:if test="${list.bizCase eq 'G'.toString()}">골프장</c:if>
+                                            <c:if test="${list.bizCase eq 'S'.toString()}">상가</c:if>
+                                            <c:if test="${list.bizCase eq 'T'.toString()}">타운하우스</c:if>
+                                            <c:if test="${list.bizCase eq 'R'.toString()}">리조트</c:if>
+                                            <c:if test="${list.bizCase eq 'L'.toString()}">토지</c:if>
+                                            <c:if test="${list.bizCase eq 'K'.toString()}">지식산업센터</c:if>
+                                            <c:if test="${list.bizCase eq 'N'.toString()}">아파트/오피스텔</c:if>
+                                            <c:if test="${list.bizCase eq 'Q'.toString()}">생활숙박시설</c:if>
+                                            <%--<c:if test="${list.bizCase eq 'S'.toString()}">오피스텔/오피스</c:if>--%>
+                                            <c:if test="${list.bizCase eq 'Z'.toString()}">기타</c:if>
                                         </td>
-                                        <td></td>
+                                        <td style = "cursor:pointer; text-align: left" onClick = "location.href='/SaleItem/detail/${ list.saleId }' ">${list.bunName}</td>
+                                        <td>${list.progress6} %</td>
+                                        <td>
+                                            <fmt:parseDate value="${ list.bunDate }" pattern="yyyy-MM-dd'T'HH:mm" var="bunDate" type="both" />
+                                            <fmt:formatDate pattern="yyyy-MM-dd" value="${ bunDate }" />
+                                        </td>
+                                        <td>${list.userInfo.userNm}</td>
+                                        <td>
+                                            <fmt:parseDate value="${ list.regDate }" pattern="yyyy-MM-dd'T'HH:mm" var="regDate" type="both" />
+                                            <fmt:formatDate pattern="yyyy-MM-dd" value="${ regDate }" />
+                                        </td>
+                                        <td>${list.viewCount}</td>
                                     </tr>
+                                </c:forEach>
+
                                 </tbody>
                             </table>
                         </div>
@@ -201,14 +227,27 @@
             });
 
             $('input[name=searchWord]').val(prevSearchWord);
+            $('#status option[value="${status}"]').attr('selected','selected');
+            $('#progress6 option[value="${progress6}"]').attr('selected','selected');
+            $('#bizCase option[value="${bizCase}"]').attr('selected','selected');
         });
 
         $('button[name=btnRegist]').on('click', function () {
-            //location.href = "/user/createForm/"
+            location.href = "/SaleItem/createForm/"
         });
 
         $('button[name=btnViewDetail]').on('click', function () {
-            //location.href = "/user/detail/"+$(this).attr('data-id');
+            location.href = "/SaleItem/detail/"+$(this).attr('data-id');
+        });
+
+        /*검색*/
+        $('form#reqForm button').on('click', function () {
+            $('form#reqForm').attr('action', document.location.pathname);
+            if (prevSearchWord != $('input[name=searchWord]').val()) {
+                $('#reqForm input[name=page]').val(0);
+                $('#reqForm input[name=size]').val(10);
+            }
+            $('form#reqForm').submit();
         });
     </script>
     

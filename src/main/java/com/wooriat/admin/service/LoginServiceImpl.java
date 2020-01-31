@@ -14,7 +14,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.beans.Transient;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.*;
 
 @Slf4j
@@ -33,6 +35,7 @@ public class LoginServiceImpl implements LoginService {
 	}
 
 	@Override
+	@Transactional
 	public Map<String, Object> loginUser(Map<String, String> params, HttpServletRequest httpSvltReq, HttpServletResponse httpSvltRes) throws Exception {
 		Map<String, Object> returnMap = new HashMap<>();
 		String jSession = CookieManager.getCookieValue(httpSvltReq,"JSESSIONID");
@@ -51,11 +54,13 @@ public class LoginServiceImpl implements LoginService {
 		TbUser user = userRepository.save(byUserIdAndUserPwd);
 
 		SessionVo sessionVo = SessionUtil.getUserInfo(httpSvltReq);
+		sessionVo.setUid(user.getUid());
 		sessionVo.setUserId(userId);
 		sessionVo.setJSessionId(jSession);
 		sessionVo.setEmail(user.getEmail());
 		sessionVo.setDeptNm(user.getDeptNm());
 		sessionVo.setAuthCd(user.getAuthCd().getValue());
+
 		sessionVo.setLastLoginDtm(user.getLastLoginDtm());
 
 		returnMap.put("status", "success");

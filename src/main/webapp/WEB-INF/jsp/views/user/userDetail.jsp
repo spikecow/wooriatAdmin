@@ -123,10 +123,10 @@
             </div>
             <div class="row">
                 <div class="col-xs-6 text-left">
-                    <button name="btnDelete" type="button" class="btn btn-info btn-group-sm" data-id="${ data.id }" >삭제</button>
+                    <button name="btnDelete" type="button" class="btn btn-info btn-group-sm" data-id="${ data.uid }" >삭제</button>
                 </div>
                 <div class="col-xs-6 text-right">
-                    <button name="btnCreate" type="button" class="btn btn-info btn-group-sm" data-id="${ data.id }" >수정</button>
+                    <button name="btnCreate" type="button" class="btn btn-info btn-group-sm" data-id="${ data.uid }" >수정</button>
                     <button name="btnList" type="button" class="btn btn-info btn-group-sm" >목록</button>
                 </div>
             </div>
