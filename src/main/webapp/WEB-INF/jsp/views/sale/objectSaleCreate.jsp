@@ -425,7 +425,7 @@
                                             <div style="width: 100%;">
                                             <input type="file" id="imgFile1" name="imgFile1" tabindex="-1" style="position: absolute; clip: rect(0px, 0px, 0px, 0px);">
                                             <div class="bootstrap-filestyle input-group file_style">
-                                                <input type="text" id="nPhoto1" name="nPhoto1" class="form-control input-sm" placeholder="Select your file" value="${data.NPhoto1}"/>
+                                                <input type="text" id="nPhoto1" class="form-control input-sm" placeholder="Select your file" />
                                                 <span class="group-span-filestyle input-group-btn" tabindex="0">
                                                     <label for="imgFile1" class="btn btn-info text-info btn-sm btn-file">
                                                         <span class="buttonText"> 찾아보기</span>
@@ -434,6 +434,10 @@
                                                 <span class="input-group-addon">* 215 X 153 사이즈 업로드</span>
                                             </div>
                                             </div>
+                                            <c:if test="${ not empty data.NPhoto1}">
+                                                <input type="hidden" name="nPhoto1" value="${data.NPhoto1}"/>
+                                                <div>${data.NPhoto1}</div>
+                                            </c:if>
                                         </td>
                                     </tr>
 
@@ -444,7 +448,7 @@
                                             <div style="width: 100%;">
                                                 <input type="file" id="imgFile2" name="imgFile2" tabindex="-1" style="position: absolute; clip: rect(0px, 0px, 0px, 0px);">
                                                 <div class="bootstrap-filestyle input-group file_style">
-                                                    <input type="text" id="nPhoto2" name="nPhoto2" class="form-control input-sm" placeholder="Select your file" value="${data.NPhoto2}"/>
+                                                    <input type="text" id="nPhoto2" class="form-control input-sm" placeholder="Select your file"/>
                                                     <span class="group-span-filestyle input-group-btn" tabindex="0">
                                                     <label for="imgFile2" class="btn btn-info text-info btn-sm btn-file">
                                                         <span class="buttonText"> 찾아보기</span>
@@ -453,6 +457,10 @@
                                                     <span class="input-group-addon">* 775 X 475 사이즈 업로드</span>
                                                 </div>
                                             </div>
+                                            <c:if test="${ not empty data.NPhoto2}">
+                                                <input type="hidden" name="nPhoto2" value="${data.NPhoto2}"/>
+                                                <div>${data.NPhoto2}</div>
+                                            </c:if>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -632,6 +640,10 @@
             }else{
                 location.href = "/SaleItem/detail/"+$(this).attr('data-id');
             }
+        });
+
+        $("input[type=file]").on('change', function() {
+            fileNameAtTarget(this);
         });
 
 

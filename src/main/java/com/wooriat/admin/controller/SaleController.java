@@ -16,9 +16,15 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.Part;
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -29,6 +35,8 @@ import java.util.Map;
 public class SaleController {
 
 	private final SaleService saleService;
+
+	private final ServletContext servletContext;
 
 	@GetMapping("/list")
     @ResponseBody
@@ -91,12 +99,21 @@ public class SaleController {
 
 	@PostMapping("/insert")
 	@ResponseBody
-	public Map<String,String> insertController(@ModelAttribute KoaSaleDto koaSaleDto, HttpServletRequest req){
+	public Map<String,String> insertController(@ModelAttribute KoaSaleDto koaSaleDto, MultipartHttpServletRequest req){
 
 		Map<String,String> map = new HashMap<String, String>();
 		SessionVo sessionVo = (SessionVo) SessionUtil.get(req, AdminConst.SESSION_NAME);
 
 		try {
+			String file1 = getUploadFileUrl(req, "imgFile1", "SaleItem");
+			String file2 = getUploadFileUrl(req, "imgFile2", "SaleItem");
+			if(!file1.isEmpty()) {
+				koaSaleDto.setNPhoto1(file1);
+			}
+			if(!file2.isEmpty()) {
+				koaSaleDto.setNPhoto2(file2);
+			}
+
 			koaSaleDto.setUserInfo(TbUser.builder().uid(sessionVo.getUid()).build());
 			saleService.insert(koaSaleDto);
 			map.put("status", "success");
@@ -111,12 +128,21 @@ public class SaleController {
 
 	@PutMapping("/insert")
 	@ResponseBody
-	public Map<String,Object> updateController(@ModelAttribute KoaSaleDto koaSaleDto, HttpServletRequest req){
+	public Map<String,Object> updateController(@ModelAttribute KoaSaleDto koaSaleDto, MultipartHttpServletRequest req){
 
 		Map<String,Object> map = new HashMap<String, Object>();
 		SessionVo sessionVo = (SessionVo) SessionUtil.get(req, AdminConst.SESSION_NAME);
 
 		try {
+			String file1 = getUploadFileUrl(req, "imgFile1", "SaleItem");
+			String file2 = getUploadFileUrl(req, "imgFile2", "SaleItem");
+			if(!file1.isEmpty()) {
+				koaSaleDto.setNPhoto1(file1);
+			}
+			if(!file2.isEmpty()) {
+				koaSaleDto.setNPhoto2(file2);
+			}
+
 			koaSaleDto.setUserInfo(TbUser.builder().uid(sessionVo.getUid()).build());
 			saleService.update(koaSaleDto);
 			map.put("status", "success");
@@ -159,6 +185,32 @@ public class SaleController {
 		}
 
 		return map;
+	}
+
+	public String getUploadFileUrl(MultipartHttpServletRequest req,
+								   String tagName, String urlPath ) throws IOException, ServletException {
+
+		String fileUrl = "";
+
+		Part part = req.getPart(tagName);
+
+		if (part != null && part.getSize() > 0) {
+
+			String uploadPath = File.separator + "uploads" + File.separator + urlPath;
+			File uploadDir = new File(servletContext.getRealPath("/") + uploadPath);
+			if (!uploadDir.exists()) {
+				uploadDir.mkdirs();
+			}
+
+			String uploadedFileName = part.getSubmittedFileName();
+			String uploadedFilePath = uploadDir.getAbsolutePath() + File.separator + uploadedFileName;
+
+			part.write(uploadedFilePath);
+			fileUrl = uploadedFileName;
+
+		}
+
+		return fileUrl;
 	}
 	
 }

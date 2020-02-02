@@ -121,7 +121,7 @@
                                             <div style="width: 100%;">
                                                 <input type="file" id="imgFile1" name="imgFile1" tabindex="-1" style="position: absolute; clip: rect(0px, 0px, 0px, 0px);">
                                                 <div class="bootstrap-filestyle input-group file_style">
-                                                    <input type="text" id="insertFile1" name="insertFile1" class="form-control input-sm" placeholder="Select your file" value="${data.insertFile1}"/>
+                                                    <input type="text" class="form-control input-sm" placeholder="Select your file"/>
                                                     <span class="group-span-filestyle input-group-btn" tabindex="0">
                                                     <label for="imgFile1" class="btn btn-info text-info btn-sm btn-file">
                                                         <span class="buttonText"> 찾아보기</span>
@@ -129,6 +129,10 @@
                                                     </span>
                                                 </div>
                                             </div>
+                                            <c:if test="${ not empty data.insertFile1}">
+                                                <input type="hidden" name="insertFile1" value="${data.insertFile1}"/>
+                                                <div>${data.insertFile1}</div>
+                                            </c:if>
                                         </td>
                                     </tr>
 
@@ -138,7 +142,7 @@
                                             <div style="width: 100%;">
                                                 <input type="file" id="imgFile2" name="imgFile2" tabindex="-1" style="position: absolute; clip: rect(0px, 0px, 0px, 0px);">
                                                 <div class="bootstrap-filestyle input-group file_style">
-                                                    <input type="text" id="insertFile2" name="insertFile2" class="form-control input-sm" placeholder="Select your file" value="${data.insertFile2}"/>
+                                                    <input type="text" class="form-control input-sm" placeholder="Select your file"/>
                                                     <span class="group-span-filestyle input-group-btn" tabindex="0">
                                                     <label for="imgFile2" class="btn btn-info text-info btn-sm btn-file">
                                                         <span class="buttonText"> 찾아보기</span>
@@ -146,6 +150,10 @@
                                                     </span>
                                                 </div>
                                             </div>
+                                            <c:if test="${ not empty data.insertFile2}">
+                                                <input type="hidden" name="insertFile2" value="${data.insertFile2}"/>
+                                                <div>${data.insertFile2}</div>
+                                            </c:if>
                                         </td>
                                     </tr>
 
@@ -155,7 +163,7 @@
                                             <div style="width: 100%;">
                                                 <input type="file" id="imgFile3" name="imgFile3" tabindex="-1" style="position: absolute; clip: rect(0px, 0px, 0px, 0px);">
                                                 <div class="bootstrap-filestyle input-group file_style">
-                                                    <input type="text" id="insertFile3" name="insertFile3" class="form-control input-sm" placeholder="Select your file" value="${data.insertFile3}"/>
+                                                    <input type="text" class="form-control input-sm" placeholder="Select your file"/>
                                                     <span class="group-span-filestyle input-group-btn" tabindex="0">
                                                     <label for="imgFile3" class="btn btn-info text-info btn-sm btn-file">
                                                         <span class="buttonText"> 찾아보기</span>
@@ -163,6 +171,10 @@
                                                     </span>
                                                 </div>
                                             </div>
+                                            <c:if test="${ not empty data.insertFile3}">
+                                                <input type="hidden" name="insertFile3" value="${data.insertFile3}"/>
+                                                <div>${data.insertFile3}</div>
+                                            </c:if>
                                         </td>
                                     </tr>
 
@@ -172,7 +184,7 @@
                                             <div style="width: 100%;">
                                                 <input type="file" id="imgFile4" name="imgFile4" tabindex="-1" style="position: absolute; clip: rect(0px, 0px, 0px, 0px);">
                                                 <div class="bootstrap-filestyle input-group file_style">
-                                                    <input type="text" id="insertFile4" name="insertFile4" class="form-control input-sm" placeholder="Select your file" value="${data.insertFile4}"/>
+                                                    <input type="text" class="form-control input-sm" placeholder="Select your file"/>
                                                     <span class="group-span-filestyle input-group-btn" tabindex="0">
                                                     <label for="imgFile4" class="btn btn-info text-info btn-sm btn-file">
                                                         <span class="buttonText"> 찾아보기</span>
@@ -180,6 +192,10 @@
                                                     </span>
                                                 </div>
                                             </div>
+                                            <c:if test="${ not empty data.insertFile4}">
+                                                <input type="hidden" name="insertFile4" value="${data.insertFile4}"/>
+                                                <div>${data.insertFile4}</div>
+                                            </c:if>
                                         </td>
                                     </tr>
 
@@ -189,7 +205,7 @@
                                             <div style="width: 100%;">
                                                 <input type="file" id="imgFile5" name="imgFile5" tabindex="-1" style="position: absolute; clip: rect(0px, 0px, 0px, 0px);">
                                                 <div class="bootstrap-filestyle input-group file_style">
-                                                    <input type="text" id="insertFile5" name="insertFile5" class="form-control input-sm" placeholder="Select your file" value="${data.insertFile5}"/>
+                                                    <input type="text" class="form-control input-sm" placeholder="Select your file"/>
                                                     <span class="group-span-filestyle input-group-btn" tabindex="0">
                                                     <label for="imgFile5" class="btn btn-info text-info btn-sm btn-file">
                                                         <span class="buttonText"> 찾아보기</span>
@@ -197,6 +213,10 @@
                                                     </span>
                                                 </div>
                                             </div>
+                                            <c:if test="${ not empty data.insertFile5}">
+                                                <input type="hidden" name="insertFile5" value="${data.insertFile5}"/>
+                                                <div>${data.insertFile5}</div>
+                                            </c:if>
                                         </td>
                                     </tr>
                             </table>

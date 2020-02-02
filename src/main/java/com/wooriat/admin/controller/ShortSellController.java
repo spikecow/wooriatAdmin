@@ -161,6 +161,29 @@ public class ShortSellController {
 		Map<String,Object> map = new HashMap<String, Object>();
 		SessionVo sessionVo = (SessionVo) SessionUtil.get(req, AdminConst.SESSION_NAME);
 		try {
+
+			String file1 = getUploadFileUrl(req, "imgFile1", "ShortSell");
+			String file2 = getUploadFileUrl(req, "imgFile2", "ShortSell");
+			String file3 = getUploadFileUrl(req, "imgFile3", "ShortSell");
+			String file4 = getUploadFileUrl(req, "imgFile4", "ShortSell");
+			String file5 = getUploadFileUrl(req, "imgFile5", "ShortSell");
+
+			if(!file1.isEmpty()) {
+				shotSellDto.setInsertFile1(file1);
+			}
+			if(!file2.isEmpty()) {
+				shotSellDto.setInsertFile2(file2);
+			}
+			if(!file3.isEmpty()) {
+				shotSellDto.setInsertFile3(file3);
+			}
+			if(!file4.isEmpty()) {
+				shotSellDto.setInsertFile4(file4);
+			}
+			if(!file5.isEmpty()) {
+				shotSellDto.setInsertFile5(file5);
+			}
+
 			shotSellDto.setUserInfo(new TbUser().builder().uid(sessionVo.getUid()).build());
 			shortSellService.update(shotSellDto);
 			map.put("status", "success");
