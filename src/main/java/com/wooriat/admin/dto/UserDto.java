@@ -27,6 +27,9 @@ public class UserDto {
     private LocalDateTime lastLoginDtm;
 
     public TbUser toEntity(){
+        if(authCd == null){
+            authCd = AuthCd.A;
+        }
         if(menuId!= null && !menuId.isEmpty()){
             List<TbMenu> list = new ArrayList<>();
             for(Long menu_id: menuId){
@@ -43,6 +46,7 @@ public class UserDto {
                 .authCd(this.authCd)
                 .userMenus(this.userMenus)
                 .deptNm(this.deptNm)
+                .lastLoginDtm(this.lastLoginDtm)
                 .build();
     }
 

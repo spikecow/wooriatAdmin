@@ -53,9 +53,6 @@ public class TbUser {
     @Column(name = "mdfy_dtm")
     private LocalDateTime mdfyDtm;
 
-    @Column(name = "mdfy_user_id", length = 20)
-    private String mdfyUserId;
-
 	@Column(name = "last_login_dtm")
 	private LocalDateTime lastLoginDtm;
 

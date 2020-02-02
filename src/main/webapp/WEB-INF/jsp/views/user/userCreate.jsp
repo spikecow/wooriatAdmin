@@ -66,7 +66,7 @@
         <section class="content">
             <form id="form">
                 <input type="hidden" name="uid" id="id" value="${data.uid}"/>
-                <input type="hidden" name="authCd" id="authCd" value="A"/>
+                <input type="hidden" name="authCd" id="authCd" value="${data.authCd.value}"/>
             <div class="row">
                 <div class="col-xs-12">
 
