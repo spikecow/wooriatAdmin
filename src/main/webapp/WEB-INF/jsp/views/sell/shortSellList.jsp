@@ -128,7 +128,7 @@
                                         <td>${(totalCount - status.index) - ( (page - 1)  *  10 ) }</td>
                                         <td>${list.sortStatus}</td>
                                         <td style = "cursor:pointer; text-align: left" onClick = "location.href='/ShortSell/detail/${ list.sellId }' ">${list.newsTitle}</td>
-                                        <td><c:if test="${!empty list.insertFile1}"><i class="fa fa-file-archive-o"></i></c:if></td>
+                                        <td><c:if test="${!empty list.insertFile1}"><i class="fa fa-file-pdf-o"></i></c:if></td>
                                         <td>${list.userInfo.userNm}</td>
                                         <td>
                                             <fmt:parseDate value="${ list.regDate }" pattern="yyyy-MM-dd'T'HH:mm" var="regDate" type="both" />
