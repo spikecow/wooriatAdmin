@@ -16,8 +16,8 @@ spring:
 spring:
   servlet:
     multipart:
-      max-file-size: 100MB
-      max-request-size: 100MB
+      max-file-size: 10MB
+      max-request-size: 10MB
       enabled: true
   profiles: local
   serviceUrl: devsite.gsitm.com
@@ -62,8 +62,8 @@ logging:
 spring:
   servlet:
     multipart:
-      max-file-size: 100MB
-      max-request-size: 100MB
+      max-file-size: 10MB
+      max-request-size: 10MB
       enabled: true
   profiles: dev
   serviceUrl: devsite.gsitm.com
@@ -107,8 +107,8 @@ logging:
 spring:
   servlet:
     multipart:
-      max-file-size: 100MB
-      max-request-size: 100MB
+      max-file-size: 10MB
+      max-request-size: 10MB
       enabled: true
   profiles: prod
   serviceUrl: stgsite.gsitm.com
