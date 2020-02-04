@@ -28,6 +28,11 @@
 						<i class="fa fa-users"></i> <span>공매물건정보</span>
 					</a>
 				</li>
+				<li class="treeview" data-uri="/admin">
+					<a href="/popup/list">
+						<i class="fa fa-users"></i> <span>메인팝업관리</span>
+					</a>
+				</li>
 			</ul>
 		</section>
 	</aside>
