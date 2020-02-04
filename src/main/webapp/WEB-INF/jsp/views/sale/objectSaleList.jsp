@@ -212,6 +212,10 @@
 
         var currentPage = Number('${page}');
         var prevSearchWord = '${searchWord}';
+        if(totalPage == 0){
+            totalPage = currentPage;
+        }
+
         $(function () {
             $('#pagination').twbsPagination({
                 totalPages: totalPage,

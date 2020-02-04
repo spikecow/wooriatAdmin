@@ -6,33 +6,103 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
-	<aside class="main-sidebar">
-		<section class="sidebar">
-			<ul class="sidebar-menu active">
-				<li class="header">MAIN NAVIGATION</li>
+<link rel="stylesheet" href="/bootstrap/css/style.css">
 
-				<c:if test="${ userLvl eq 'S' }">
-				<li class="treeview" data-uri="/admin">
-					<a href="/user/list">
-						<i class="fa fa-users"></i> <span>회원관리</span>
-					</a>
-				</li>
-				</c:if>
-				<li class="treeview" data-uri="/admin">
-					<a href="/SaleItem/list">
-						<i class="fa fa-users"></i> <span>분양물건정보</span>
-					</a>
-				</li>
-				<li class="treeview" data-uri="/admin">
-					<a href="/ShortSell/list">
-						<i class="fa fa-users"></i> <span>공매물건정보</span>
-					</a>
-				</li>
-				<li class="treeview" data-uri="/admin">
-					<a href="/popup/list">
-						<i class="fa fa-users"></i> <span>메인팝업관리</span>
-					</a>
-				</li>
-			</ul>
-		</section>
-	</aside>
+<aside class="main-sidebar">
+<section class="sidebar">
+<nav id="sidebar">
+        <ul class="list-unstyled components">
+			<c:if test="${ userLvl eq 'S' }">
+			<li>
+				<a href="#menuUserList" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">회원관리</a>
+				<ul class="collapse list-unstyled" id="menuUserList">
+					<li>
+						<a href="/user/list">회원관리</a>
+					</li>
+				</ul>
+			</li>
+			</c:if>
+			<li>
+				<a href="#menuMyInfo" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">내 정보 관리</a>
+				<ul class="collapse list-unstyled" id="menuMyInfo">
+					<li>
+						<a href="/user/list">내 정보 수정</a>
+					</li>
+				</ul>
+			</li>
+
+			<li class="tree-view">
+				<a href="#menuSiteMgt" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+					사이트 관리
+				</a>
+				<ul class="collapse list-unstyled" id="menuSiteMgt">
+					<li>
+						<a href="/popup/list">
+						<span>메인팝업관리</span>
+						</a>
+					</li>
+				</ul>
+			</li>
+
+			<li>
+				<a href="#menuCompany" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+					회사 소개
+				</a>
+
+				<ul class="collapse list-unstyled" id="menuCompany">
+					<li>
+						<a href="#">
+						<span>경영현황</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+						<span>회사소식</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+						<span>Photo소식</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+						<span>사회공헌</span>
+						</a>
+					</li>
+				</ul>
+			</li>
+
+			<li>
+				<a href="#menuItem" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+					물건 정보
+				</a>
+				<ul class="collapse list-unstyled" id="menuItem">
+					<li>
+						<a href="/SaleItem/list">
+						<span>분양물건정보</span>
+						</a>
+					</li>
+					<li>
+						<a href="/ShortSell/list">
+						<span>공매물건정보</span>
+						</a>
+					</li>
+				</ul>
+			</li>
+			<li>
+				<a href="#menuSupport" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+					고객센터
+				</a>
+				<ul class="collapse list-unstyled" id="menuSupport">
+					<li>
+						<a href="">
+						<span>고객문의</span>
+						</a>
+					</li>
+				</ul>
+			</li>
+	</ul>
+</nav>
+</section>
+</aside>

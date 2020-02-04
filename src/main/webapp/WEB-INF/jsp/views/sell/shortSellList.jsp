@@ -65,7 +65,7 @@
         <%@ include file="../layout/leftMenu.jsp"%>
         <div class="content-wrapper">
             <section class="content-header">
-                <h1>분양물건정보 (목록)</h1>
+                <h1>공매물건정보 (목록)</h1>
             </section>
         <!-- Main content -->
         <section class="content">
@@ -165,6 +165,10 @@
 
         var currentPage = Number('${page}');
         var prevSearchWord = '${searchWord}';
+
+        if(totalPage == 0){
+            totalPage = currentPage;
+        }
         $(function () {
             $('#pagination').twbsPagination({
                 totalPages: totalPage,

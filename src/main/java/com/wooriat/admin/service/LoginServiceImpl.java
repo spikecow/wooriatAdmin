@@ -60,6 +60,11 @@ public class LoginServiceImpl implements LoginService {
 		sessionVo.setEmail(user.getEmail());
 		sessionVo.setDeptNm(user.getDeptNm());
 		sessionVo.setAuthCd(user.getAuthCd().getValue());
+		List<Long> menuIds = new ArrayList<>();
+		for(int i=0; i<user.getUserMenus().size(); i++){
+			menuIds.add(user.getUserMenus().get(i).getMenuId());
+		}
+		sessionVo.setMenuId(menuIds);
 
 		sessionVo.setLastLoginDtm(user.getLastLoginDtm());
 

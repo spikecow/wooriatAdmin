@@ -1,7 +1,10 @@
 package com.wooriat.admin.dto;
 
+import com.wooriat.admin.domain.TbMenu;
 import lombok.Data;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 public class SessionVo {
@@ -14,6 +17,7 @@ public class SessionVo {
     private String authCd;
     private LocalDateTime cretDtm;
     private LocalDateTime lastLoginDtm;
+    private List<Long> menuId = new ArrayList<>();
 
     private String jSessionId;
 
