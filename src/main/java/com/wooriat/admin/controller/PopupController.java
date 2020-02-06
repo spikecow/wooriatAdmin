@@ -157,7 +157,7 @@ public class PopupController {
 
 	@DeleteMapping("/delete/{id}")
 	@ResponseBody
-	public Map<String,String> detailController(@PathVariable Long id) throws Exception {
+	public Map<String,String> deleteController(@PathVariable Long id) throws Exception {
 
 		Map<String,String> map = new HashMap<String, String>();
 

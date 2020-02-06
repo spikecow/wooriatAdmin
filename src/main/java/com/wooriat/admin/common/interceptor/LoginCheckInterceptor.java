@@ -35,6 +35,7 @@ public class LoginCheckInterceptor extends HandlerInterceptorAdapter {
 
 		if (sessionVo != null) {
 			request.setAttribute("userLvl", sessionVo.getAuthCd());
+			request.setAttribute("sessionVo", sessionVo);
 			if(!(request.getRequestURI().indexOf("/admin/loginView") < 0)){
 				log.info("Already login! Redirect MainView");
 				response.sendRedirect(AdminConst.MAIN_URL);

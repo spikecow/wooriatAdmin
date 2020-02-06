@@ -96,7 +96,7 @@
 				</a>
 				<ul class="collapse list-unstyled" id="menuSupport">
 					<li>
-						<a href="">
+						<a href="/qa/list">
 						<span>고객문의</span>
 						</a>
 					</li>

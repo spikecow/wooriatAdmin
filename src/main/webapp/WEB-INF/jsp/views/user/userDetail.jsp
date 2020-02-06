@@ -139,6 +139,10 @@
     <script type="text/javascript">
 
         $('button[name=btnDelete]').on('click', function () {
+            if(!confirm("${data.userNm} 회원의 사이트 관리가 불가능하고 \n모든 업무 권한이 사라지게 됩니다.\n\n정말 삭제하시겠습니까?\n\n삭제 시 모든 데이터의 복원이 불가합니다.")){
+                return false;
+            }
+
             $.ajax({
                 url : '/user/delete/'+$(this).attr('data-id'),
                 async: true,

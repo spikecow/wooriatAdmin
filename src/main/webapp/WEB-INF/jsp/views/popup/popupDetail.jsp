@@ -158,6 +158,9 @@
     <script type="text/javascript">
 
         $('button[name=btnDelete]').on('click', function () {
+            if(!confirm("정말 삭제하시겠습니까?")){
+                return false;
+            }
             $.ajax({
                 url : '/popup/delete/'+$(this).attr('data-id'),
                 async: true,

@@ -55,6 +55,7 @@ public class LoginServiceImpl implements LoginService {
 
 		SessionVo sessionVo = SessionUtil.getUserInfo(httpSvltReq);
 		sessionVo.setUid(user.getUid());
+		sessionVo.setUserNm(user.getUserNm());
 		sessionVo.setUserId(userId);
 		sessionVo.setJSessionId(jSession);
 		sessionVo.setEmail(user.getEmail());

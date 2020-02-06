@@ -4,6 +4,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
+<% pageContext.setAttribute("lineChar", "\n"); %>
+
+
 
 <!DOCTYPE html>
 <html>
@@ -330,7 +333,7 @@
                                     <tr>
                                         <td>
                                             <c:if test="${empty data.memo }">없음</c:if>
-                                            ${data.memo}
+                                            ${fn:replace(data.memo, lineChar, "<br/>")}
                                         </td>
                                     </tr>
                                 </tbody>
@@ -358,6 +361,10 @@
     <script type="text/javascript">
 
         $('button[name=btnDelete]').on('click', function () {
+            if(!confirm("정말 삭제하시겠습니까?")){
+                return false;
+            }
+
             $.ajax({
                 url : '/SaleItem/delete/'+$(this).attr('data-id'),
                 async: true,

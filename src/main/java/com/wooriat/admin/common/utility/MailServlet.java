@@ -1,9 +1,6 @@
-package com.wooriat.admin;
+package com.wooriat.admin.common.utility;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+import java.util.Properties;
 
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -12,25 +9,22 @@ import javax.mail.Transport;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+
 import java.io.UnsupportedEncodingException;
-import java.util.Properties;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
-public class AdminApplicationTests {
+public class MailServlet {
 
-    @Test
-    public void contextLoads() {
+    private void sendSimpleMail() {
         Properties props = new Properties();
         Session session = Session.getDefaultInstance(props, null);
 
         try {
             Message msg = new MimeMessage(session);
-            msg.setFrom(new InternetAddress("huod28@naver.com", "훈")); // 주소, 이름
+            msg.setFrom(new InternetAddress("admin@example.com", "Example.com Admin")); // 주소, 이름
             msg.addRecipient(Message.RecipientType.TO,
-                    new InternetAddress("huod28@naver.com", "유저"));
-            msg.setSubject("제목");
-            msg.setText("내용");
+                    new InternetAddress("user@example.com", "Mr. User"));
+            msg.setSubject("Your Example.com account has been activated");
+            msg.setText("This is a test");
             Transport.send(msg);
         } catch (AddressException e) {
             // 주소에러
@@ -39,8 +33,5 @@ public class AdminApplicationTests {
         } catch (UnsupportedEncodingException e) {
             // ...
         }
-
-        assert true;
     }
-
 }

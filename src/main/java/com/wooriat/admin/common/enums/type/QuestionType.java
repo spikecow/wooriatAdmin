@@ -14,16 +14,17 @@ import com.wooriat.admin.common.enums.AdmEnum;
  * 
  * ========================================================================================
  */
-public enum AuthCd implements AdmEnum {
+public enum QuestionType implements AdmEnum {
 
-	S("S","슈퍼 관리자"),
-	A("A","일반 관리자");
-	
+	A("A","신규사업"),
+	B("B","진행사업"),
+	C("C","일반");
+
 	private String value;
-	
+
 	private String description;
-	
-	private AuthCd(String value, String description) {
+
+	private QuestionType(String value, String description) {
 		this.value = value;
 		this.description = description;
 	}

@@ -85,7 +85,7 @@
                     <div class="box">
                         <div class="box-body table-responsive no-padding">
 
-                            <table class="table table-striped" id="regionTable">
+                            <table class="table table-striped table-hover" id="regionTable">
                             	<colgroup>
                             		<col width="5%">
                             		<col width="45%">
