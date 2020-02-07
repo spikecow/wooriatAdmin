@@ -20,6 +20,6 @@ public interface QaService {
     public QuestionDto getDetail(Long id);
     public void deleteQuestion(Long id);
     public void deleteAnswer(Long id);
-    public void mailSend(TbAnswer tbAnswer) throws MessagingException;
+    public void mailSend(Long aid) throws MessagingException;
 
 }

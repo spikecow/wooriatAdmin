@@ -98,14 +98,16 @@ public class QaServiceImpl implements QaService {
      *
      */
     @Override
-    public void mailSend(TbAnswer tbAnswer) throws MessagingException{
+    public void mailSend(Long aid) throws MessagingException{
+
+        Optional<TbAnswer> answer = answerRepository.findById(aid);
 
         VelocityContext velocityContext = new VelocityContext();
-        velocityContext.put("questionTitle", tbAnswer.getQuestionInfo().getTitle());
-        velocityContext.put("questionContent", tbAnswer.getQuestionInfo().getContent());
-        velocityContext.put("answerContent", tbAnswer.getContent());
+        velocityContext.put("questionTitle", answer.get().getQuestionInfo().getTitle());
+        velocityContext.put("questionContent", answer.get().getQuestionInfo().getContent());
+        velocityContext.put("answerContent", answer.get().getContent());
 
-        mailUtil.sendMail(tbAnswer.getQuestionInfo().getEmail(), tbAnswer.getUserInfo().getEmail(),"답변) "+tbAnswer.getQuestionInfo().getTitle()
+        mailUtil.sendMail(answer.get().getQuestionInfo().getEmail(), answer.get().getUserInfo().getEmail(),"답변) "+answer.get().getQuestionInfo().getTitle()
                 ,"", "Y", velocityContext, "qaMail");
 
     }

@@ -3,6 +3,7 @@ package com.wooriat.admin.controller;
 import com.wooriat.admin.common.utility.MailUtil;
 import com.wooriat.admin.common.utility.SessionUtil;
 import com.wooriat.admin.constant.AdminConst;
+import com.wooriat.admin.domain.TbAnswer;
 import com.wooriat.admin.domain.TbQuestion;
 import com.wooriat.admin.domain.TbUser;
 import com.wooriat.admin.dto.AnswerDto;
@@ -70,7 +71,8 @@ public class QaController {
 
 		try {
 			answerDto.setUserInfo(new TbUser().builder().uid(sessionVo.getUid()).build());
-			qaService.insert(req, answerDto);
+			TbAnswer tbAnswer = qaService.insert(req, answerDto);
+			// qaService.mailSend(tbAnswer.getAid());  // 메일 전송
 			map.put("status", "success");
 			map.put("qid", answerDto.getQid());
 		}catch(Exception e) {
