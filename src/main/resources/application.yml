@@ -21,20 +21,15 @@ spring:
       enabled: true
   profiles: local
   serviceUrl: devsite.gsitm.com
-  aws:
-    bucket: image.gsitm.com
-    accesskey: AKIA5N7TAKETLDKZ22HO
-    secretKey: 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
-    sub-dir-name: /static
   mvc:
     view:
       prefix: /WEB-INF/jsp/views/
       suffix: .jsp
   datasource:
-    url: jdbc:sqlserver://211.232.50.135:1433;databaseName=WOORIAT
-    username: "wooriat"
-    password: "woori_at_1234$#@!"
-    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+     url: jdbc:sqlserver://211.232.50.135:1433;databaseName=WOORIAT
+     username: "wooriat"
+     password: "woori_at_1234$#@!"
+     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
   jpa:
     hibernate:
       ddl-auto: update
@@ -45,8 +40,8 @@ spring:
     properties:
       hibernate:
         jdbc.lob.non_contextual_creation: true
-#        show_sql: true # systemOut log
-#        format_sql: true
+        show_sql: true # systemOut log
+        format_sql: true
 
 logging:
   level:
@@ -67,11 +62,6 @@ spring:
       enabled: true
   profiles: dev
   serviceUrl: devsite.gsitm.com
-  aws:
-    bucket: image.gsitm.com
-    accesskey: AKIA5N7TAKETLDKZ22HO
-    secretKey: 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
-    sub-dir-name: /static
   mvc:
     view:
       prefix: /WEB-INF/jsp/views/
@@ -112,11 +102,6 @@ spring:
       enabled: true
   profiles: prod
   serviceUrl: stgsite.gsitm.com
-  aws:
-    bucket: image.gsitm.com
-    accesskey: AKIA5N7TAKETLDKZ22HO
-    secretKey: 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
-    sub-dir-name: /static
   mvc:
     view:
       prefix: /WEB-INF/jsp/views/

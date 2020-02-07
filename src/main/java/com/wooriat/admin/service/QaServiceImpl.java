@@ -3,6 +3,7 @@ package com.wooriat.admin.service;
 import com.querydsl.core.BooleanBuilder;
 import com.wooriat.admin.common.enums.type.QuestionType;
 import com.wooriat.admin.common.exception.NotExistDataException;
+import com.wooriat.admin.common.utility.MailUtil;
 import com.wooriat.admin.domain.*;
 import com.wooriat.admin.dto.AnswerDto;
 import com.wooriat.admin.dto.QuestionDto;
@@ -10,12 +11,14 @@ import com.wooriat.admin.repository.AnswerRepository;
 import com.wooriat.admin.repository.QuestionRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.velocity.VelocityContext;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import javax.mail.MessagingException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
@@ -32,6 +35,7 @@ public class QaServiceImpl implements QaService {
 
     private final AnswerRepository answerRepository;
 
+    private final MailUtil mailUtil;
 
     @Override
     public Page<TbQuestion> getList(Map<String, Object> params, Pageable pageable) {
@@ -54,7 +58,7 @@ public class QaServiceImpl implements QaService {
 
     @Override
     @Transactional
-    public TbAnswer insert(HttpServletRequest req, AnswerDto answerDto) throws IOException, ServletException {
+    public TbAnswer insert(HttpServletRequest req, AnswerDto answerDto) {
         return answerRepository.save(answerDto.toEntity());
     }
 
@@ -87,5 +91,22 @@ public class QaServiceImpl implements QaService {
             throw new NotExistDataException("존재하지 않는 데이터 입니다.");
         }
         answerRepository.deleteById(byId.get().getAid());
+    }
+
+    /**
+     *
+     *
+     */
+    @Override
+    public void mailSend(TbAnswer tbAnswer) throws MessagingException{
+
+        VelocityContext velocityContext = new VelocityContext();
+        velocityContext.put("questionTitle", tbAnswer.getQuestionInfo().getTitle());
+        velocityContext.put("questionContent", tbAnswer.getQuestionInfo().getContent());
+        velocityContext.put("answerContent", tbAnswer.getContent());
+
+        mailUtil.sendMail(tbAnswer.getQuestionInfo().getEmail(), tbAnswer.getUserInfo().getEmail(),"답변) "+tbAnswer.getQuestionInfo().getTitle()
+                ,"", "Y", velocityContext, "qaMail");
+
     }
 }

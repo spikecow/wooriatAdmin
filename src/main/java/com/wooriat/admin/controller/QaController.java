@@ -1,6 +1,6 @@
 package com.wooriat.admin.controller;
 
-import com.wooriat.admin.common.enums.type.QuestionType;
+import com.wooriat.admin.common.utility.MailUtil;
 import com.wooriat.admin.common.utility.SessionUtil;
 import com.wooriat.admin.constant.AdminConst;
 import com.wooriat.admin.domain.TbQuestion;
