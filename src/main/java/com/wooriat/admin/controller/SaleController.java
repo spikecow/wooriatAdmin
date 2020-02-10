@@ -196,9 +196,8 @@ public class SaleController {
 
 		if (part != null && part.getSize() > 0) {
 
-			// 실서버 경로 D:\WEBSERVICE\Admin\SaleItem\Photo
-			String uploadPath = File.separator + "uploads" + File.separator + urlPath;
-			File uploadDir = new File(servletContext.getRealPath("/") + uploadPath);
+			// 실서버 경로 D:\WEBSERVICE\wooriAtUploadFiles\"uploadPath"\파일명
+			File uploadDir = new File("D:"+File.separator+"WEBSERVICE"+File.separator+"wooriAtUploadFiles"+File.separator+urlPath);
 			if (!uploadDir.exists()) {
 				uploadDir.mkdirs();
 			}
