@@ -74,13 +74,6 @@
                     <div class="box box-danger">
                         <div class="box-body text-right">
                             <form id="reqForm" class="form-inline col-md">
-                                <span>질문유형&emsp;</span>
-                                <select class="form-control" name="type" id="type">
-                                    <option value="">전체</option>
-                                    <option value="A">신규사업</option>
-                                    <option value="B">진행사업</option>
-                                    <option value="C">일반</option>
-                                </select>
                                 <input style="width: 400px;" type="text" id="searchWord" name="searchWord" class="form-control" placeholder="검색어를 입력해 주세요." />
                                 <button type="submit" id="reqFormSubmit" class="btn btn-warning btn-group-sm" data-type="web">검색</button>
                                 <input type="hidden" name="page" value="0" />

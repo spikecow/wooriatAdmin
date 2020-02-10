@@ -22,9 +22,6 @@ public class TbQuestion {
     @Column(name = "qid")
     private Long qid;
 
-    @Column(name = "type", length = 10)
-    private String type;
-
     @Column(name = "name", length = 100)
     private String name;
 
@@ -49,9 +46,8 @@ public class TbQuestion {
     private List<TbAnswer> answers = new ArrayList<>();
 
     @Builder
-    private TbQuestion(Long qid, String type, String name, String email, String tel, String title, String content, List<TbAnswer> answers){
+    private TbQuestion(Long qid, String name, String email, String tel, String title, String content, List<TbAnswer> answers){
         this.qid = qid;
-        this.type = type;
         this.name = name;
         this.email = email;
         this.tel = tel;

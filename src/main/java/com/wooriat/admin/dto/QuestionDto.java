@@ -13,7 +13,6 @@ import java.util.Optional;
 public class QuestionDto {
 
     private Long qid;
-    private String type;
     private String name;
     private String email;
     private String tel;
@@ -26,7 +25,6 @@ public class QuestionDto {
 
         return TbQuestion.builder()
                 .qid(this.qid)
-                .type(this.type)
                 .name(this.name)
                 .email(this.email)
                 .tel(this.tel)
@@ -38,7 +36,6 @@ public class QuestionDto {
     public QuestionDto(Optional<TbQuestion> tbQuestion) {
         if(tbQuestion.isPresent()) {
             this.qid = tbQuestion.get().getQid();
-            this.type = tbQuestion.get().getType();
             this.name = tbQuestion.get().getName();
             this.email = tbQuestion.get().getEmail();
             this.tel = tbQuestion.get().getTel();
@@ -52,7 +49,6 @@ public class QuestionDto {
     public QuestionDto toDto(QuestionDto questionDto) {
 
         this.qid = questionDto.getQid();
-        this.type = questionDto.getType();
         this.name = questionDto.getName();
         this.email = questionDto.getEmail();
         this.tel = questionDto.getTel();

@@ -43,14 +43,9 @@ public class QaServiceImpl implements QaService {
         BooleanBuilder builder = new BooleanBuilder();
 
         String searchWord = (String)params.get("searchWord");
-        String type = (String)params.get("type");
-
         if(searchWord != null && !searchWord.equals("")){
             builder.and(tbQuestion.title.like("%"+searchWord+"%")).or(tbQuestion.content.like("%"+searchWord+"%"))
             .or(tbQuestion.name.like("%"+searchWord+"%"));
-        }
-        if(type != null && !type.equals("")){
-            builder.and(tbQuestion.type.eq(type));
         }
 
         return questionRepository.findAll(builder, pageable);
