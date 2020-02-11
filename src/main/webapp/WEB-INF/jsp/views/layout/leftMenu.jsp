@@ -51,7 +51,7 @@
 
 				<ul class="collapse list-unstyled" id="menuCompany">
 					<li>
-						<a href="#">
+						<a href="/notice/list?menuCd=M">
 						<span>경영현황</span>
 						</a>
 					</li>
