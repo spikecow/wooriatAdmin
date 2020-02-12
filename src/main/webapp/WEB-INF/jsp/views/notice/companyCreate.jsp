@@ -255,7 +255,7 @@
 
                     if(data != null && data != ''){
                         $('textarea#content').val(safeTagToHtmlTag(data));
-                        oEditors.getById["popupText"].exec("LOAD_CONTENTS_FIELD");
+                        oEditors.getById["content"].exec("LOAD_CONTENTS_FIELD");
                     }
 
                 },
