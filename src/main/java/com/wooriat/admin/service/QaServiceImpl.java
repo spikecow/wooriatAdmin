@@ -102,7 +102,7 @@ public class QaServiceImpl implements QaService {
         velocityContext.put("questionContent", answer.get().getQuestionInfo().getContent());
         velocityContext.put("answerContent", answer.get().getContent());
 
-        mailUtil.sendMail(answer.get().getQuestionInfo().getEmail(), answer.get().getUserInfo().getEmail(),"답변) "+answer.get().getQuestionInfo().getTitle()
+        mailUtil.sendMail(answer.get().getQuestionInfo().getEmail(), "webplanner@wooriat.com","답변) "+answer.get().getQuestionInfo().getTitle()
                 ,"", "Y", velocityContext, "qaMail");
 
     }

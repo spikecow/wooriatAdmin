@@ -97,25 +97,9 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th class="text-center">내</th>
-                                        </tr>용
-                                        <tr>
-                                            <th class="text-center">파일첨부</th>
+                                            <th class="text-center">내용</th>
                                             <td>
-                                                <input type="hidden" name="imgTitle1" value="리스트용 이미지">
-                                                <div style="width: 100%;">
-                                                    <input type="file" id="imgFile1" name="imgFile1" tabindex="-1" style="position: absolute; clip: rect(0px, 0px, 0px, 0px);" value="${data.img}">
-                                                    <div class="bootstrap-filestyle input-group file_style">
-                                                        <input type="text" id="nPhoto1" class="form-control input-sm" placeholder="Select your file" />
-                                                        <span class="group-span-filestyle input-group-btn" tabindex="0">
-                                                        <label for="imgFile1" class="btn btn-info text-info btn-sm btn-file">
-                                                            <span class="buttonText"> 찾아보기</span>
-                                                        </label>
-                                                     </span>
-                                                        <span class="input-group-addon">PDF 파일 만 업로드 가능 합니다.</span>
-                                                    </div>
-                                                </div>
-                                                <c:if test="${data.img != null}">현재 업로드 파일 : ${data.img}</c:if>
+                                                <textarea name="content" id="content" style="width:100%; height:280px; display:none;"></textarea>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -152,6 +136,7 @@
                 $("#regDateInput").datepicker().datepicker("show");
             });
 
+            createSE2('${data.content}');
 
         });
 
@@ -235,6 +220,48 @@
         $("input[type=file]").on('change', function() {
             fileNameAtTarget(this);
         });
+
+        var oEditors = [];
+
+        var sLang = "ko_KR";	// 언어 (ko_KR/ en_US/ ja_JP/ zh_CN/ zh_TW), default = ko_KR
+        var isSECreate = false;
+        // 추가 글꼴 목록
+        // var aAdditionalFontSet = [["MS UI Gothic", "MS UI Gothic"], ["Comic Sans MS", "Comic Sans MS"],["TEST","TEST"]];
+        var aAdditionalFontSet = [['Noto Sans KR', 'sans-serif']];
+
+        function createSE2(data){
+
+            nhn.husky.EZCreator.createInIFrame({
+                oAppRef: oEditors,
+                elPlaceHolder: "content",
+                sSkinURI: "/se2/SmartEditor2Skin.html",
+                htParams : {
+                    SE_EditingAreaManager: {
+                        sDefaultEditingMode : "WYSIWYG"	// 로딩 시 디폴트 편집 모드를 설정 Editor로 설정
+                    },
+                    bUseToolbar : true,				// 툴바 사용 여부 (true:사용/ false:사용하지 않음)
+                    bUseVerticalResizer : false,		// 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
+                    bUseModeChanger : true,			// 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
+                    bSkipXssFilter : true,		// client-side xss filter 무시 여부 (true:사용하지 않음 / 그외:사용)
+                    aAdditionalFontList : [['Noto Sans KR', 'sans-serif']],		// 추가 글꼴 목록
+                    fOnBeforeUnload : function(){
+                        //alert("완료!");
+                    },
+                    I18N_LOCALE : sLang
+                },
+                fOnAppLoad : function(){
+                    $("iframe").css("height", "350px");
+                    isSECreate = true;
+
+                    if(data != null && data != ''){
+                        $('textarea#content').val(safeTagToHtmlTag(data));
+                        oEditors.getById["popupText"].exec("LOAD_CONTENTS_FIELD");
+                    }
+
+                },
+                fCreator: "createSEditor2"
+            });
+        };
 
 
     </script>

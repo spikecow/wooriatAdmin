@@ -25,6 +25,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.Part;
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -203,7 +205,9 @@ public class SaleController {
 			}
 
 			String uploadedFileName = part.getSubmittedFileName();
-			String uploadedFilePath = uploadDir.getAbsolutePath() + File.separator + uploadedFileName;
+			LocalDateTime localDate = LocalDateTime.now();
+			String uploadTime = localDate.format(DateTimeFormatter.ofPattern("yyyyMMddHHmmssSSS"));
+			String uploadedFilePath = uploadDir.getAbsolutePath() + File.separator + uploadTime+"_"+uploadedFileName;
 
 			part.write(uploadedFilePath);
 			fileUrl = uploadedFileName;

@@ -190,7 +190,7 @@ public class NoticeController {
 			}
 
 			noticeDto.setUserInfo(new TbUser().builder().uid(sessionVo.getUid()).build());
-			noticeService.insert(req, noticeDto);
+			noticeService.update(noticeDto);
 			map.put("status", "success");
 			map.put("seqNo", noticeDto.getSeqNo());
 		}catch(Exception e) {
