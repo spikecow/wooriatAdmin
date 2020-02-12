@@ -56,7 +56,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="#">
+						<a href="/notice/list?menuCd=C">
 						<span>회사소식</span>
 						</a>
 					</li>

@@ -10,7 +10,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>메인 팝업 관리</title>
+<title>우리자산신탁</title>
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
 <%--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">--%>
@@ -60,95 +60,85 @@
         <%@ include file="../layout/leftMenu.jsp"%>
         <div class="content-wrapper">
             <section class="content-header">
-                <h1>메인 팝업 관리</h1>
+                <h1>경영현황 관리</h1>
             </section>
         <!-- Main content -->
         <section class="content">
             <form id="form" enctype="multipart/form-data">
-                <input type="hidden" name="popupId" id="popupId" value="${data.popupId}"/>
-            <div class="row">
-                <div class="col-xs-12">
-                    <div class="box">
-                        <div class="box-body table-responsive no-padding">
+                <input type="hidden" name="menuCd" value="${menuCd}" />
+                <input type="hidden" name="seqNo" value="${data.seqNo}" />
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="box">
+                            <div class="box-body table-responsive no-padding">
 
-                            <table class="table table-bordered">
-                            	<colgroup>
-                            		<col width="35%">
-                            		<col width="65%">
-                            	</colgroup>
+                                <table class="table table-bordered">
+                                    <colgroup>
+                                        <col width="15%">
+                                        <col width="*">
+                                    </colgroup>
+                                    <tbody>
+                                    <tr>
+                                        <th class="text-center">분류</th>
+                                        <td>
+                                            <select class="form-control" name="typeCd" id="typeCd">
+                                                <option value="01" <c:if test="${data.typeCd eq '01'.toString()}">selected</c:if>>수시공시</option>
+                                                <option value="02" <c:if test="${data.typeCd eq '02'.toString()}">selected</c:if>>영업보고</option>
+                                                <option value="03" <c:if test="${data.typeCd eq '03'.toString()}">selected</c:if>>영업순자본비</option>
+                                                <option value="04" <c:if test="${data.typeCd eq '04'.toString()}">selected</c:if>>감사보고서</option>
+                                                <option value="05" <c:if test="${data.typeCd eq '05'.toString()}">selected</c:if>>(구)경영공시</option>
+                                                <option value="06" <c:if test="${data.typeCd eq '06'.toString()}">selected</c:if>>약관공시</option>
+                                            </select>
+                                        </td>
+                                    </tr>
 
-                                <tbody>
                                     <tr>
                                         <th class="text-center">제목</th>
-                                        <td>
-                                           ${data.popupTitle}
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <th class="text-center">게시시간</th>
-                                        <td>
-                                            <div class="form-inline">
-                                                    <fmt:parseDate value="${ data.popupStrtDt }" pattern="yyyy-MM-dd'T'HH:mm" var="popupStrtDt" type="both" />
-                                                    <fmt:formatDate pattern="yyyy.MM.dd HH:mm" value="${ popupStrtDt }" />
-                                                    &nbsp;~&nbsp;
-                                                    <fmt:parseDate value="${ data.popupEndDt }" pattern="yyyy-MM-dd'T'HH:mm" var="popupEndDt" type="both" />
-                                                    <fmt:formatDate pattern="yyyy.MM.dd HH:mm" value="${ popupEndDt }" />
-                                                </select>
-                                            </div>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <th class="text-center">등록자</th>
-                                        <td>
-                                            ${data.userInfo.userNm}
-                                        </td>
+                                        <td>${data.title}"/></td>
                                     </tr>
 
                                     <tr>
                                         <th class="text-center">등록일</th>
                                         <td>
-                                            <fmt:parseDate value="${ data.cretDtm }" pattern="yyyy-MM-dd'T'HH:mm" var="cretDtm" type="both" />
-                                            <fmt:formatDate pattern="yyyy.MM.dd" value="${ cretDtm }" />
+                                            <div class="input-group col-xs-12" >
+                                                <input type="text" name="regDateInput" id="regDateInput" class="form-control" value="${data.regDate}"/>
+                                                <span id="dateIcon1" class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
+                                            </div>
                                         </td>
                                     </tr>
-
                                     <tr>
-                                        <th style="vertical-align: middle" class="text-center">내용</th>
+                                        <th class="text-center">파일첨부</th>
                                         <td>
-                                            <c:if test="${data.popupType eq 'T'.toString()}">
-                                                <c:out value="${data.popupText}" escapeXml="false"/>
-                                            </c:if>
-                                            <c:if test="${data.popupType eq 'I'.toString()}">
-                                                <img src="/uploads/popup/${data.popupImg}" />
-                                            </c:if>
+                                            <input type="hidden" name="imgTitle1" value="리스트용 이미지">
+                                            <div style="width: 100%;">
+                                                <input type="file" id="imgFile1" name="imgFile1" tabindex="-1" style="position: absolute; clip: rect(0px, 0px, 0px, 0px);">
+                                                <div class="bootstrap-filestyle input-group file_style">
+                                                    <input type="text" id="nPhoto1" class="form-control input-sm" placeholder="Select your file" />
+                                                    <span class="group-span-filestyle input-group-btn" tabindex="0">
+                                                        <label for="imgFile1" class="btn btn-info text-info btn-sm btn-file">
+                                                            <span class="buttonText"> 찾아보기</span>
+                                                        </label>
+                                                     </span>
+                                                    <span class="input-group-addon">PDF 파일 만 업로드 가능 합니다.</span>
+                                                </div>
+                                            </div>
                                         </td>
                                     </tr>
-
-
-                                    <tr>
-                                        <th class="text-center">URL</th>
-                                        <td>
-                                            <a href="${data.popupLnkUrl}" target="_blank">${data.popupLnkUrl}</a>
-                                        </td>
-                                    </tr>
-
-                            </table>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                    </div>
 
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-6 text-left">
-                    <button name="btnDelete" type="button" class="btn btn-info btn-group-sm" data-id="${ data.popupId }" >삭제</button>
+                <div class="row">
+                    <div class="col-sm-12 text-right">
+                        <button name="btnCancel" type="button" class="btn btn-info btn-group-sm" data-id="${ data.seqNo }" >취소</button>
+                        <button name="btnRegist" type="submit" class="btn btn-info btn-group-sm" >등록</button>
+                    </div>
                 </div>
-                <div class="col-xs-6 text-right">
-                    <button name="btnCreate" type="button" class="btn btn-info btn-group-sm" data-id="${ data.popupId }" >수정</button>
-                    <button name="btnList" type="button" class="btn btn-info btn-group-sm" >목록</button>
-                </div>
-            </div>
 
             </form>
 

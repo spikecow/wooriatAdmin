@@ -65,7 +65,7 @@
         <%@ include file="../layout/leftMenu.jsp"%>
         <div class="content-wrapper">
             <section class="content-header">
-                <h1>경영현황 관리</h1>
+                <h1>회사소식 관리</h1>
             </section>
         <!-- Main content -->
         <section class="content">
@@ -74,16 +74,6 @@
                     <div class="box box-danger">
                         <div class="box-body text-right">
                             <form id="reqForm" class="form-inline col-md">
-
-                                <select class="form-control" name="typeCd" id="typeCd">
-                                    <option value="">전체</option>
-                                    <option value="01">수시공시</option>
-                                    <option value="02">영업보고</option>
-                                    <option value="03">영업순자본비율</option>
-                                    <option value="04">감사보고서</option>
-                                    <option value="05">(구)경영공시</option>
-                                    <option value="06">약관공시</option>
-                                </select>
                                 <input style="width: 400px;" type="text" id="searchWord" name="searchWord" class="form-control" placeholder="검색어를 입력해 주세요." />
                                 <button type="button" id="reqFormSubmit" class="btn btn-warning btn-group-sm" data-type="web">검색</button>
                                 <input type="hidden" name="menuCd" value="${menuCd}" />
@@ -99,7 +89,6 @@
                             <table class="table table-striped" id="regionTable">
                             	<colgroup>
                             		<col width="5%">
-                            		<col width="10%">
                             		<col width="*">
                             		<col width="5%">
                             		<col width="10%">
@@ -109,7 +98,6 @@
                                 <thead class="thead-light">
                                     <tr>
                                         <th scope="col" class="text-center">번호</th>
-                                        <th scope="col" class="text-center">분류</th>
                                         <th scope="col" class="text-center">제목</th>
                                         <th scope="col" class="text-center">파일</th>
                                         <th scope="col" class="text-center">등록자</th>
@@ -120,21 +108,13 @@
                                 <c:forEach items="${list.content}" var="list" varStatus="status">
                                     <tr class="text-center">
                                         <td>${(totalCount - status.index) - ( (page - 1)  *  10 ) }</td>
-                                        <td>
-                                            <c:if test="${list.typeCd eq '01'.toString()}">수시공시</c:if>
-                                            <c:if test="${list.typeCd eq '02'.toString()}">영업보고</c:if>
-                                            <c:if test="${list.typeCd eq '03'.toString()}">영업순자본비율</c:if>
-                                            <c:if test="${list.typeCd eq '04'.toString()}">감사보고서</c:if>
-                                            <c:if test="${list.typeCd eq '05'.toString()}">(구)경영공시</c:if>
-                                            <c:if test="${list.typeCd eq '06'.toString()}">약관공시</c:if>
-                                        </td>
-                                        <td style = "cursor:pointer;" onClick = "location.href='/notice/updateForm/${ list.seqNo }/${menuCd}'">${list.title}</td>
+                                        <td style = "cursor:pointer;" onClick = "location.href='/notice/updateForm/${ list.seqNo }'">${list.title}</td>
                                         <td>
                                             <c:if test="${list.img ne ''.toString()}"><button class="btn-file">파일</button></c:if>
                                         </td>
                                         <td>${list.userInfo.userNm}</td>
                                         <td>
-                                            <fmt:parseDate value="${ list.regDate }" pattern="yyyy-MM-dd'T'HH:mm" var="cretDtm" type="both" />
+                                            <fmt:parseDate value="${ list.cretDtm }" pattern="yyyy-MM-dd'T'HH:mm" var="cretDtm" type="both" />
                                             <fmt:formatDate pattern="yyyy-MM-dd" value="${ cretDtm }" />
                                         </td>
                                     </tr>
@@ -185,12 +165,11 @@
                 }
             });
 
-            $('input[name=searchWord]').val(prevSearchWord);
-            $('#typeCd option[value="${typeCd}"]').attr('selected','selected');
+            $('input[name=searchWord]').val(prevSearchWord)
         });
 
         $('button[name=btnRegist]').on('click', function () {
-            location.href = "/notice/createForm?menuCd=M";
+            location.href = "/notice/createForm?menuCd=C";
         });
 
         $('button[name=btnViewDetail]').on('click', function () {

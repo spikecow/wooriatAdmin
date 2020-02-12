@@ -38,6 +38,8 @@ public class NoticeController {
 
 	private final ServletContext servletContext;
 
+	private String urlPath = "";
+
 	@GetMapping("/list")
     @ResponseBody
 	public ModelAndView listController(@RequestParam Map<String, Object> params, Model model,
@@ -65,7 +67,19 @@ public class NoticeController {
         model.addAttribute("searchWord",sw);
 		
 		ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("notice/noticeList");
+
+		if(StringUtils.equals(menuCd, "M")){
+			modelAndView.setViewName("notice/noticeList");
+		}
+		else if(StringUtils.equals(menuCd, "C")){
+			modelAndView.setViewName("notice/companyList");
+		}
+		else if(StringUtils.equals(menuCd, "P")){
+			modelAndView.setViewName("notice/photoList");
+		}
+		else if(StringUtils.equals(menuCd, "S")){
+			modelAndView.setViewName("notice/socialList");
+		}
         
         return modelAndView;
 	}
@@ -82,9 +96,9 @@ public class NoticeController {
 		return modelAndView;
 	}
 
-	@GetMapping("/updateForm/{id}")
+	@GetMapping("/updateForm/{id}/{menuCd}")
 	@ResponseBody
-	public ModelAndView updateFormController(Model model, @PathVariable Long id) {
+	public ModelAndView updateFormController(Model model, @PathVariable Long id, @PathVariable String menuCd) {
 
 		NoticeDto noticeDto = noticeService.getDetail(id);
 
@@ -92,7 +106,20 @@ public class NoticeController {
 		model.addAttribute("type", "PUT");
 
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("notice/noticeCreate");
+
+		if(StringUtils.equals(menuCd, "M")){
+			modelAndView.setViewName("notice/noticeCreate");
+		}
+		else if(StringUtils.equals(menuCd, "C")){
+			modelAndView.setViewName("notice/companyCreate");
+		}
+		else if(StringUtils.equals(menuCd, "P")){
+			modelAndView.setViewName("notice/photoCreate");
+		}
+		else if(StringUtils.equals(menuCd, "S")){
+			modelAndView.setViewName("notice/socialCreate");
+		}
+
 		return modelAndView;
 	}
 
@@ -103,17 +130,16 @@ public class NoticeController {
 		Map<String,String> map = new HashMap<String, String>();
 		SessionVo sessionVo = (SessionVo) SessionUtil.get(req, AdminConst.SESSION_NAME);
 
-		String urlPath = "";
-		if(StringUtils.equals(noticeDto.getTypeCd(), "M")){
+		if(StringUtils.equals(noticeDto.getMenuCd(), "M")){
 			urlPath = "Government";
 		}
-		else if(StringUtils.equals(noticeDto.getTypeCd(), "C")){
+		else if(StringUtils.equals(noticeDto.getMenuCd(), "C")){
 			urlPath = "Notice";
 		}
-		else if(StringUtils.equals(noticeDto.getTypeCd(), "P")){
+		else if(StringUtils.equals(noticeDto.getMenuCd(), "P")){
 			urlPath = "Photo";
 		}
-		else if(StringUtils.equals(noticeDto.getTypeCd(), "S")){
+		else if(StringUtils.equals(noticeDto.getMenuCd(), "S")){
 			urlPath = "Social";
 		}
 
@@ -142,8 +168,22 @@ public class NoticeController {
 
 		Map<String,Object> map = new HashMap<String, Object>();
 		SessionVo sessionVo = (SessionVo) SessionUtil.get(req, AdminConst.SESSION_NAME);
+
+		if(StringUtils.equals(noticeDto.getMenuCd(), "M")){
+			urlPath = "Government";
+		}
+		else if(StringUtils.equals(noticeDto.getMenuCd(), "C")){
+			urlPath = "Notice";
+		}
+		else if(StringUtils.equals(noticeDto.getMenuCd(), "P")){
+			urlPath = "Photo";
+		}
+		else if(StringUtils.equals(noticeDto.getMenuCd(), "S")){
+			urlPath = "Social";
+		}
+
 		try {
-			String file = getUploadFileUrl(req, "imgFile1", "notice");
+			String file = getUploadFileUrl(req, "imgFile1", urlPath);
 
 			if(!file.isEmpty()) {
 				noticeDto.setImg(file);

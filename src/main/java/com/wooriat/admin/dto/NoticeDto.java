@@ -72,9 +72,7 @@ public class NoticeDto {
             this.cretDtm = tbNotice.get().getCretDtm();
             this.mdfyDtm = tbNotice.get().getMdfyDtm();
             this.userInfo = tbNotice.get().getUserInfo();
-            this.startDate = tbNotice.get().getStrtDt().format(DateTimeFormatter.ofPattern("yyyyMMdd"));
-            this.endDate = tbNotice.get().getEndDt().format(DateTimeFormatter.ofPattern("yyyyMMdd"));
-            if(tbNotice.get().getRegDate() != null){
+            if(tbNotice.get().getStrtDt() != null){
                 this.startDate=tbNotice.get().getStrtDt().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
             }
             if(tbNotice.get().getEndDt() != null){

@@ -60,7 +60,7 @@
     <%@ include file="../layout/leftMenu.jsp"%>
     <div class="content-wrapper">
         <section class="content-header">
-            <h1>경영현황</h1>
+            <h1>회사소식 관리</h1>
         </section>
         <!-- Main content -->
         <section class="content">
@@ -79,20 +79,6 @@
                                     </colgroup>
                                     <tbody>
                                         <tr>
-                                            <th class="text-center">분류</th>
-                                            <td>
-                                                <select class="form-control" name="typeCd" id="typeCd">
-                                                    <option value="01" <c:if test="${data.typeCd eq '01'.toString()}">selected</c:if>>수시공시</option>
-                                                    <option value="02" <c:if test="${data.typeCd eq '02'.toString()}">selected</c:if>>영업보고</option>
-                                                    <option value="03" <c:if test="${data.typeCd eq '03'.toString()}">selected</c:if>>영업순자본비</option>
-                                                    <option value="04" <c:if test="${data.typeCd eq '04'.toString()}">selected</c:if>>감사보고서</option>
-                                                    <option value="05" <c:if test="${data.typeCd eq '05'.toString()}">selected</c:if>>(구)경영공시</option>
-                                                    <option value="06" <c:if test="${data.typeCd eq '06'.toString()}">selected</c:if>>약관공시</option>
-                                                </select>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
                                             <th class="text-center">제목</th>
                                             <td>
                                                 <input type="text" name="title" id="title" class="form-control" value="${data.title}"/>
@@ -110,6 +96,9 @@
                                                 </div>
                                             </td>
                                         </tr>
+                                        <tr>
+                                            <th class="text-center">내</th>
+                                        </tr>용
                                         <tr>
                                             <th class="text-center">파일첨부</th>
                                             <td>
