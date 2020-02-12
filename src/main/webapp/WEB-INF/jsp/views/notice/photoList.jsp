@@ -65,7 +65,7 @@
         <%@ include file="../layout/leftMenu.jsp"%>
         <div class="content-wrapper">
             <section class="content-header">
-                <h1>회사소식 관리</h1>
+                <h1>포토소식 관리</h1>
             </section>
         <!-- Main content -->
         <section class="content">
@@ -89,8 +89,9 @@
                             <table class="table table-striped" id="regionTable">
                             	<colgroup>
                             		<col width="5%">
+                                    <col width="10%">
                             		<col width="*">
-                            		<col width="5%">
+                            		<col width="15%">
                             		<col width="10%">
                             		<col width="10%">
                             	</colgroup>
@@ -98,8 +99,9 @@
                                 <thead class="thead-light">
                                     <tr>
                                         <th scope="col" class="text-center">번호</th>
+                                        <th scope="col" class="text-center">이미지</th>
                                         <th scope="col" class="text-center">제목</th>
-                                        <th scope="col" class="text-center">파일</th>
+                                        <th scope="col" class="text-center">기간</th>
                                         <th scope="col" class="text-center">등록자</th>
                                         <th scope="col" class="text-center">등록일</th>
                                     </tr>
@@ -108,10 +110,8 @@
                                 <c:forEach items="${list.content}" var="list" varStatus="status">
                                     <tr class="text-center">
                                         <td>${(totalCount - status.index) - ( (page - 1)  *  10 ) }</td>
+                                        <td><c:if test="${list.img != null && list.img ne ''}"><img src="http://images.wooriat.com/Photo/${list.img}"></c:if></td>
                                         <td style = "cursor:pointer;" onClick = "location.href='/notice/updateForm/${ list.seqNo }/${menuCd}'">${list.title}</td>
-                                        <td>
-                                            <c:if test="${list.img != null && list.img ne ''}"><button class="btn-file">파일</button></c:if>
-                                        </td>
                                         <td>${list.userInfo.userNm}</td>
                                         <td>
                                             <fmt:parseDate value="${ list.cretDtm }" pattern="yyyy-MM-dd'T'HH:mm" var="cretDtm" type="both" />

@@ -3,8 +3,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-
-
+<%
+pageContext.setAttribute("CR", "\r");
+pageContext.setAttribute("LF", "\n");
+%>
+<c:set var="contents" value="${fn:replace(fn:replace(data.content, LF, ''), CR, '')}" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -60,7 +63,7 @@
     <%@ include file="../layout/leftMenu.jsp"%>
     <div class="content-wrapper">
         <section class="content-header">
-            <h1>경영현황</h1>
+            <h1>포토소식 관리</h1>
         </section>
         <!-- Main content -->
         <section class="content">
@@ -79,26 +82,11 @@
                                     </colgroup>
                                     <tbody>
                                         <tr>
-                                            <th class="text-center">분류</th>
-                                            <td>
-                                                <select class="form-control" name="typeCd" id="typeCd">
-                                                    <option value="01" <c:if test="${data.typeCd eq '01'.toString()}">selected</c:if>>수시공시</option>
-                                                    <option value="02" <c:if test="${data.typeCd eq '02'.toString()}">selected</c:if>>영업보고</option>
-                                                    <option value="03" <c:if test="${data.typeCd eq '03'.toString()}">selected</c:if>>영업순자본비</option>
-                                                    <option value="04" <c:if test="${data.typeCd eq '04'.toString()}">selected</c:if>>감사보고서</option>
-                                                    <option value="05" <c:if test="${data.typeCd eq '05'.toString()}">selected</c:if>>(구)경영공시</option>
-                                                    <option value="06" <c:if test="${data.typeCd eq '06'.toString()}">selected</c:if>>약관공시</option>
-                                                </select>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
                                             <th class="text-center">제목</th>
                                             <td>
                                                 <input type="text" name="title" id="title" class="form-control" value="${data.title}"/>
                                             </td>
                                         </tr>
-
                                         <tr>
                                             <th class="text-center">등록일</th>
                                             <td>
@@ -111,7 +99,31 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th class="text-center">파일첨부</th>
+                                            <th class="text-center">기간</th>
+                                            <td>
+                                                <div class="input-group col-xs-12" style="width:50%;float:left;">
+                                                    <input type="text" name="startDate" id="startDate" class="form-control" value="${data.startDate}"/>
+                                                    <span id="dateIcon2" class="input-group-addon">
+                                                        <span class="glyphicon glyphicon-calendar"></span>
+                                                        ~
+                                                    </span>
+                                                </div>
+                                                <div class="input-group col-xs-12" style="width:50%;">
+                                                    <input type="text" name="endDate" id="endDate" class="form-control" value="${data.endDate}"/>
+                                                    <span id="dateIcon3" class="input-group-addon">
+                                                        <span class="glyphicon glyphicon-calendar"></span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th class="text-center">내용</th>
+                                            <td>
+                                                <textarea name="content" id="content" style="width:100%; height:280px; display:none;"></textarea>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th class="text-center">이미지</th>
                                             <td>
                                                 <input type="hidden" name="imgTitle1" value="리스트용 이미지">
                                                 <div style="width: 100%;">
@@ -123,7 +135,6 @@
                                                             <span class="buttonText"> 찾아보기</span>
                                                         </label>
                                                      </span>
-                                                        <span class="input-group-addon">PDF 파일 만 업로드 가능 합니다.</span>
                                                     </div>
                                                 </div>
                                                 <c:if test="${data.img != null && data.img ne ''}">현재 업로드 파일 : ${data.img}</c:if>
@@ -158,18 +169,27 @@
                 , dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'] //달력의 요일 부분 텍스트
             });
 
-            $("#regDateInput").datepicker();
+            $("#regDateInput, #startDate, #endDate").datepicker();
 
             $('#dateIcon1').on('click', function () {
                 $("#regDateInput").datepicker().datepicker("show");
             });
+            $('#dateIcon2').on('click', function () {
+                $("#startDate").datepicker().datepicker("show");
+            });
+            $('#dateIcon3').on('click', function () {
+                $("#endDate").datepicker().datepicker("show");
+            });
 
+            createSE2('${contents.toString().replace("'", "\\'").replace("\"","\\\"")}');
 
         });
 
         var type = '${type}';
 
         $('#form').on('submit', function () {
+
+            oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD",[]);
 
             if(!valCheck('#title', '제목을 입력해 주세요.')){
                 return false;
@@ -276,6 +296,48 @@
                 }
             });
         });
+
+        var oEditors = [];
+
+        var sLang = "ko_KR";	// 언어 (ko_KR/ en_US/ ja_JP/ zh_CN/ zh_TW), default = ko_KR
+        var isSECreate = false;
+        // 추가 글꼴 목록
+        // var aAdditionalFontSet = [["MS UI Gothic", "MS UI Gothic"], ["Comic Sans MS", "Comic Sans MS"],["TEST","TEST"]];
+        var aAdditionalFontSet = [['Noto Sans KR', 'sans-serif']];
+
+        function createSE2(data){
+
+            nhn.husky.EZCreator.createInIFrame({
+                oAppRef: oEditors,
+                elPlaceHolder: "content",
+                sSkinURI: "/se2/SmartEditor2Skin.html",
+                htParams : {
+                    SE_EditingAreaManager: {
+                        sDefaultEditingMode : "WYSIWYG"	// 로딩 시 디폴트 편집 모드를 설정 Editor로 설정
+                    },
+                    bUseToolbar : true,				// 툴바 사용 여부 (true:사용/ false:사용하지 않음)
+                    bUseVerticalResizer : false,		// 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
+                    bUseModeChanger : true,			// 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
+                    bSkipXssFilter : true,		// client-side xss filter 무시 여부 (true:사용하지 않음 / 그외:사용)
+                    aAdditionalFontList : [['Noto Sans KR', 'sans-serif']],		// 추가 글꼴 목록
+                    fOnBeforeUnload : function(){
+                        //alert("완료!");
+                    },
+                    I18N_LOCALE : sLang
+                },
+                fOnAppLoad : function(){
+                    $("iframe").css("height", "350px");
+                    isSECreate = true;
+
+                    if(data != null && data != ''){
+                        $('textarea#content').val(safeTagToHtmlTag(data));
+                        oEditors.getById["content"].exec("LOAD_CONTENTS_FIELD");
+                    }
+
+                },
+                fCreator: "createSEditor2"
+            });
+        };
 
 
     </script>

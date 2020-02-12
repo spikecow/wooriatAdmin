@@ -61,12 +61,12 @@
 						</a>
 					</li>
 					<li>
-						<a href="#">
+						<a href="/notice/list?menuCd=P">
 						<span>Photo소식</span>
 						</a>
 					</li>
 					<li>
-						<a href="#">
+						<a href="/notice/list?menuCd=S">
 						<span>사회공헌</span>
 						</a>
 					</li>

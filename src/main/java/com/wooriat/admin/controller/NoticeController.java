@@ -88,11 +88,26 @@ public class NoticeController {
 	@ResponseBody
 	public ModelAndView createFormController(@RequestParam Map<String, Object> params, Model model) {
 
+		String menuCd = (String)params.get("menuCd");
+
 		model.addAttribute("type", "POST");
-		model.addAttribute("menuCd", (String) params.get("menuCd"));
+		model.addAttribute("menuCd", (String) menuCd);
 
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("notice/noticeCreate");
+
+		if(StringUtils.equals(menuCd, "M")){
+			modelAndView.setViewName("notice/noticeCreate");
+		}
+		else if(StringUtils.equals(menuCd, "C")){
+			modelAndView.setViewName("notice/companyCreate");
+		}
+		else if(StringUtils.equals(menuCd, "P")){
+			modelAndView.setViewName("notice/photoCreate");
+		}
+		else if(StringUtils.equals(menuCd, "S")){
+			modelAndView.setViewName("notice/socialCreate");
+		}
+
 		return modelAndView;
 	}
 

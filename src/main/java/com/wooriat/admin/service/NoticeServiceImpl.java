@@ -60,7 +60,7 @@ public class NoticeServiceImpl implements NoticeService{
     @Transactional
     public TbNotice update(NoticeDto noticeDto) {
         NoticeDto dto = new NoticeDto(noticeRepository.findById(noticeDto.getSeqNo()));
-        dto.toDto(dto);
+        dto.toDto(noticeDto);
         return noticeRepository.save(dto.toEntity());
     }
 

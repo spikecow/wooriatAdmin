@@ -130,7 +130,7 @@
                                         </td>
                                         <td style = "cursor:pointer;" onClick = "location.href='/notice/updateForm/${ list.seqNo }/${menuCd}'">${list.title}</td>
                                         <td>
-                                            <c:if test="${list.img ne ''.toString()}"><button class="btn-file">파일</button></c:if>
+                                            <c:if test="${list.img != null && list.img ne ''}"><button class="btn-file">파일</button></c:if>
                                         </td>
                                         <td>${list.userInfo.userNm}</td>
                                         <td>
@@ -190,7 +190,7 @@
         });
 
         $('button[name=btnRegist]').on('click', function () {
-            location.href = "/notice/createForm?menuCd=M";
+            location.href = "/notice/createForm?menuCd=${menuCd}";
         });
 
         $('button[name=btnViewDetail]').on('click', function () {
