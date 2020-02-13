@@ -209,8 +209,9 @@ public class SaleController {
 			String uploadTime = localDate.format(DateTimeFormatter.ofPattern("yyyyMMddHHmmssSSS"));
 			String uploadedFilePath = uploadDir.getAbsolutePath() + File.separator + uploadTime+"_"+uploadedFileName;
 
+			uploadedFileName = uploadTime+"_"+uploadedFileName;
 			part.write(uploadedFilePath);
-			fileUrl = uploadedFilePath;
+			fileUrl = uploadedFileName;
 
 		}
 
