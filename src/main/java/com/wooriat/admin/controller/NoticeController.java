@@ -45,7 +45,7 @@ public class NoticeController {
 	public ModelAndView listController(@RequestParam Map<String, Object> params, Model model,
 									   @PageableDefault(
 											   size= AdminConst.SORT_DEFAULT_SIZE_10,
-											   sort="seqNo", //정렬 key값
+											   sort="cretDtm", //정렬 key값
 											   direction = Sort.Direction.DESC) Pageable pageable) {
 		log.info("adminUserController! - Start");
 		log.info("page : {}", pageable);
