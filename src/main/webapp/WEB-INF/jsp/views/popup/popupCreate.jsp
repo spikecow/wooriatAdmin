@@ -218,6 +218,14 @@
                 return false;
             }
 
+            if(!valCheck('#startDate', '날짜를 입력해주세요')){
+                return false;
+            }
+
+            if(!valCheck('#endDate', '날짜를 입력해주세요')){
+                return false;
+            }
+
             if($('input[name="popupType"]:checked').val() == 'T'){
                 oEditors.getById["popupText"].exec("UPDATE_CONTENTS_FIELD",[]);
             }

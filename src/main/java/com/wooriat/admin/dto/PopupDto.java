@@ -27,8 +27,8 @@ public class PopupDto {
 
     public TbPopup toEntity(){
 
-        this.startDate = startDate.replaceAll("-","").replaceAll(".","");
-        this.endDate = endDate.replaceAll("-","").replaceAll(".","");
+        this.startDate = this.startDate.replace("-","").replace(".","");
+        this.endDate = this.endDate.replace("-","").replace(".","");
 
         return TbPopup.builder()
                 .popupId(this.popupId)

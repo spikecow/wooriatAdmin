@@ -82,9 +82,9 @@
 
                                 <tbody>
                                     <tr class="text-center">
-                                        <th class="text-center">당담자 팀명</th>
+                                        <th class="text-center">담당자 팀명</th>
                                         <td><input type="text" name="deptNm" class="form-control" id="deptNm" value="${data.deptNm}"/></td>
-                                        <th class="text-center">당담자 이름</th>
+                                        <th class="text-center">담당자 이름</th>
                                         <td><input type="text" name="userNm" class="form-control" id="userNm" value="${data.userNm}"/></td>
                                     </tr>
 
@@ -177,16 +177,39 @@
         var type = '${type}';
 
         $('#form').on('submit', function () {
-/*
 
-            if(!valCheck('#indDesc', 'Industries 소개를 입력해주세요')){
+            if(!valCheck('#deptNm', '담당자 팀명을 입력해주세요')){
                 return false;
             }
 
-            if(!valCheck('#partnerImgUrl1', '파트너 로고 파일을 첨부해주세요.')){
+            if(!valCheck('#userNm', '담당자 이름을 입력해주세요')){
                 return false;
             }
-*/
+
+            if(!valCheck('#userId', '담당자 아이디를 입력해주세요')){
+                return false;
+            }
+
+            if(!valCheck('#email', '담당자 이메일을 입력해주세요')){
+                return false;
+            }
+
+            var emailCheck=/^[-A-Za-z0-9_]+[-A-Za-z0-9_.]*[@]{1}[-A-Za-z0-9_]+[-A-Za-z0-9_.]*[.]{1}[A-Za-z]{1,5}$/ ;
+            if( !emailCheck.test($('#email').val()) ) {
+                alert("이메일 형식이 아닙니다");
+                return false;
+            }
+
+            if(!valCheck('#userPwd', '비밀번호를 입력해주세요')){
+                return false;
+            }
+
+            var pwdCheck = /^.*(?=^.{8,30}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
+            if(!pwdCheck.test($('#userPwd').val()) ) {
+                alert("비밀번호는 영문,숫자,특수문자를 혼용하여 8자 이상 입력해주세요.");
+                return false;
+            }
+
             var reqData = new FormData(this);
 
             $.ajax({

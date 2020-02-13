@@ -78,5 +78,14 @@
     <script src="/common/js/js/userJS.js"></script>
     <script src="/customJS/cipher.js"></script>
     <script src="/customJS/gibberish-aes.js"></script>
+
+    <script type="text/javascript">
+        document.addEventListener('keydown', function(e){
+           if(e.keyCode == 13){
+               login();
+           }
+        });
+
+    </script>
   </body>
 </html>
