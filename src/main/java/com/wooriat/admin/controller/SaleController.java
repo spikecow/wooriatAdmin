@@ -210,7 +210,7 @@ public class SaleController {
 			String uploadedFilePath = uploadDir.getAbsolutePath() + File.separator + uploadTime+"_"+uploadedFileName;
 
 			part.write(uploadedFilePath);
-			fileUrl = uploadedFileName;
+			fileUrl = uploadedFilePath;
 
 		}
 

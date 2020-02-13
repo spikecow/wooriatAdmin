@@ -89,4 +89,9 @@ public class UserServiceImpl implements UserService {
 
         return userPage;
     }
+
+    @Override
+    public TbUser passwordCheck(String userId, String userPwd){
+        return userRepository.findByUserIdAndUserPwd(userId, userPwd);
+    }
 }

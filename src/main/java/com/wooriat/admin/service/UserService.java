@@ -16,4 +16,5 @@ public interface UserService {
     public Page<TbUser> getUserList(String searchWord, Pageable pageable);
     public Map menuList();
     public void delete(Long id);
+    public TbUser passwordCheck(String userId, String userPwd);
 }
