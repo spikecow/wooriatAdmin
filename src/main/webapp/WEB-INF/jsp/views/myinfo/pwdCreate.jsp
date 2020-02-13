@@ -135,7 +135,7 @@
             var reqData = new FormData(this);
 
             $.ajax({
-                url : '/myinfo/insert',
+                url : '/myinfo/update',
                 async: true,
                 cache: false,
                 contentType: 'application/json',
@@ -151,6 +151,16 @@
 
                 if (result.status == 'fail') {
                     alert('등록하지 못했습니다.[' + result.errorMsg + ']\n반복 시 관리자에게 문의 바랍니다.');
+                    return false;
+                }
+
+                if (result.status == 'not') {
+                    alert('현재 사용중인 비밀번호를 잘못 입력하였습니다.');
+                    return false;
+                }
+
+                if (result.status == 'eq') {
+                    alert('현재 사용중인 비밀번호와 같습니다. 다른 비밀번호를 입력해주세요.');
                     return false;
                 }
 

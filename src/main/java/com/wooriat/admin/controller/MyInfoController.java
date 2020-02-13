@@ -62,5 +62,49 @@ public class MyInfoController {
 
 		return map;
 	}
-	
+
+	@GetMapping("/updateForm")
+	@ResponseBody
+	public ModelAndView updateFormController(@ModelAttribute UserDto userDto) {
+
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("myinfo/pwdCreate");
+
+		return modelAndView;
+	}
+
+	@PutMapping("/update")
+	@ResponseBody
+	public Map<String,String> updateController(@RequestParam Map<String, Object> params, HttpServletRequest req) {
+
+		Map<String,String> map = new HashMap<String, String>();
+		SessionVo sessionVo = (SessionVo) SessionUtil.get(req, AdminConst.SESSION_NAME);
+
+		UserDto userDto = userService.getDetail(sessionVo.getUid());
+
+		String userPwd = (String)params.get("userPwd");
+		String newPwd = (String)params.get("newPwd1");
+		boolean flag = false;
+
+		try {
+			if(!userDto.getUserPwd().equals(userPwd)){
+				map.put("status", "not");
+			}else {
+				if(userDto.getUserPwd().equals(newPwd)){
+					map.put("status", "eq");
+				}else{
+					userDto.setUserPwd(newPwd);
+					userService.insert(userDto);
+					map.put("status", "success");
+				}
+			}
+
+		}catch (Exception e){
+			map.put("status", "fail");
+			map.put("errorMsg", e.getMessage());
+			log.error("userInsert : {} ", e);
+		}
+
+		return map;
+	}
 }

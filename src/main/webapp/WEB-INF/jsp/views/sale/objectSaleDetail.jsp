@@ -308,12 +308,12 @@
                                 <tbody>
                                     <tr>
                                         <th class="text-center">목록이미지</th>
-                                        <td colspan="3"><a herf="/SaleItem/Photo/${data.NPhoto1}">${data.NPhoto1}</a></td>
+                                        <td colspan="3"><a herf="http://images.wooriat.com/SaleItem/Photo/${data.NPhoto1}" target="_blank">${data.NPhoto1}</a></td>
                                     </tr>
 
                                     <tr>
                                         <th class="text-center">상세페이지 이미지</th>
-                                        <td colspan="3"><a herf="/SaleItem/Photo/${data.NPhoto2}">${data.NPhoto2}</a></td>
+                                        <td colspan="3"><a herf="http://images.wooriat.com/SaleItem/Photo/${data.NPhoto2}" target="_blank">${data.NPhoto2}</a></td>
                                     </tr>
                                 </tbody>
                             </table>

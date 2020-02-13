@@ -26,7 +26,7 @@
 				<a href="#menuMyInfo" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">내 정보 관리</a>
 				<ul class="collapse list-unstyled" id="menuMyInfo">
 					<li>
-						<a href="">내 정보 수정</a>
+						<a href="/myinfo/check">내 정보 수정</a>
 					</li>
 				</ul>
 			</li>

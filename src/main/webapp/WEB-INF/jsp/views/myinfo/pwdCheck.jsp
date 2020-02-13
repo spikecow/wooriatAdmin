@@ -136,13 +136,13 @@
 
                 if (result.status == 'fail') {
                     alert('비밀번호가 맞지 않습니다.');
+                    $('#userPwd').val("");
                     return false;
                 }
 
                 if (result.status == 'success') {
-                    alert('성공');
+                    location.href = "/myinfo/updateForm";
                 }
-                //location.href = "/myinfo/check";
 
             }).fail(function(xhr, textStatus, errorThrown) {
                 if(xhr.status =='403'){
