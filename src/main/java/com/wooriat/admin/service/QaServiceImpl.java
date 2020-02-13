@@ -22,6 +22,7 @@ import javax.mail.MessagingException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.time.format.DateTimeFormatter;
 import java.util.Map;
 import java.util.Optional;
 
@@ -93,16 +94,20 @@ public class QaServiceImpl implements QaService {
      *
      */
     @Override
-    public void mailSend(Long aid) throws MessagingException{
-
-        Optional<TbAnswer> answer = answerRepository.findById(aid);
+    public void mailSend(AnswerDto answerDto) throws MessagingException{
+        QuestionDto questionDto = new QuestionDto(questionRepository.findById(answerDto.getQid()));
 
         VelocityContext velocityContext = new VelocityContext();
-        velocityContext.put("questionTitle", answer.get().getQuestionInfo().getTitle());
-        velocityContext.put("questionContent", answer.get().getQuestionInfo().getContent());
-        velocityContext.put("answerContent", answer.get().getContent());
+        velocityContext.put("questionTitle", questionDto.getTitle());
+        velocityContext.put("questionContent", questionDto.getContent().replaceAll("\n","<br>"));
 
-        mailUtil.sendMail(answer.get().getQuestionInfo().getEmail(), "webplanner@wooriat.com","답변) "+answer.get().getQuestionInfo().getTitle()
+        velocityContext.put("questionEmail", questionDto.getEmail());
+        velocityContext.put("questionTel", questionDto.getTel());
+        velocityContext.put("questionName", questionDto.getName());
+        velocityContext.put("questionCretDtm", questionDto.getCretDtm().format(DateTimeFormatter.ofPattern("yyyy.MM.dd")));
+        velocityContext.put("answerContent", answerDto.getContent().replaceAll("\n","<br>"));
+
+        mailUtil.sendMail("huod28@naver.com", "webplanner@wooriat.com","답변] "+questionDto.getTitle()
                 ,"", "Y", velocityContext, "qaMail");
 
     }

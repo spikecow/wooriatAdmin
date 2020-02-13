@@ -385,7 +385,7 @@
                 }
 
                 alert('삭제 되었습니다.');
-                location.href = "/sale/list";
+                location.href = "/SaleItem/list";
             }).fail(function(xhr, textStatus, errorThrown) {
                 if(xhr.status =='403'){
                     alert("해당 기능에 대한 권한이 없습니다.");

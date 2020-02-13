@@ -1,6 +1,7 @@
 package com.wooriat.admin.common.utility;
 
 import java.io.StringWriter;
+import java.util.Properties;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;

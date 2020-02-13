@@ -1,10 +1,78 @@
 
-<table border="1">
-    <tr><td>111</td></tr>
+<b>고객 문의사항</b>
+<table style="width: 800px; border-width: 1px; border-color: black">
+    <colgroup>
+        <col width="150px">
+        <col width="250px">
+        <col width="150px">
+        <col width="250px">
+    </colgroup>
+
+    <tbody>
+
+    <tr>
+        <th style="text-align: center">이름</th>
+        <td>
+            ${questionName}
+        </td>
+        <th style="text-align: center">등록일</th>
+        <td>
+            ${questionCretDtm}
+        </td>
+    </tr>
+
+    <tr>
+        <th style="text-align: center">이메일</th>
+        <td>
+            ${questionEmail}
+        </td>
+        <th style="text-align: center">전화번호</th>
+        <td>
+            ${questionTel}
+        </td>
+    </tr>
+
+    <tr>
+        <th style="text-align: center">제목</th>
+        <td colspan="3">
+            ${questionTitle}
+        </td>
+    </tr>
+    <tr>
+        <th style="text-align: center; vertical-align: middle">내용</th>
+        <td colspan="3">
+            ${questionContent}
+        </td>
+    </tr>
+
 </table>
 
-${questionTitle}
-${questionContent}
-${answerContent}
 
-<img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" alt="Google" height="30" width="92" data-atf="1">
+<b>우리자산신탁 답변</b>
+<table style="width: 800px; border-width: 1px; border-color: black">
+    <colgroup>
+        <col width="150px">
+        <col width="250px">
+        <col width="150px">
+        <col width="250px">
+    </colgroup>
+
+    <tbody>
+
+    <tr>
+        <th style="text-align: center; vertical-align: middle">답변내용</th>
+        <td colspan="3">
+            ${answerContent}
+        </td>
+    </tr>
+
+</table>
+
+본 메일은 정보통신망 이용 촉진 및 정보보호 등에 관한 법률에 의거해, 고객문의 작성 시 제공해 주신 이메일 주소로 발송하는 발신 전용 메일 입니다.
+
+<div style="position:relative;width:800px;margin:0 auto;">
+    <div>
+        <p >주소 : (06160) 서울특별시 강남구 테헤란로 419. 강남파이낸스빌딩 20층<em>전화. 02-6202-3000</em><em>팩스. 02-6202-3010</em></p>
+        <p>COPYRIGHT © WOORI ASSET TRUST. LTD. ALL RIGHTS RESERVED</p>
+    </div>
+</div>
