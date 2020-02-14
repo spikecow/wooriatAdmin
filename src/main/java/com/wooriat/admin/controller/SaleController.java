@@ -16,6 +16,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -194,6 +195,7 @@ public class SaleController {
 
 		String fileUrl = "";
 
+		MultipartFile file = req.getFile(tagName);
 		Part part = req.getPart(tagName);
 
 		if (part != null && part.getSize() > 0) {
@@ -204,7 +206,9 @@ public class SaleController {
 				uploadDir.mkdirs();
 			}
 
-			String uploadedFileName = part.getSubmittedFileName();
+			String fileName = file.getOriginalFilename();
+			//String uploadedFileName = part.getSubmittedFileName();
+			String uploadedFileName = fileName.substring(fileName.lastIndexOf("\\")+1);
 			LocalDateTime localDate = LocalDateTime.now();
 			String uploadTime = localDate.format(DateTimeFormatter.ofPattern("yyyyMMddHHmmssSSS"));
 			String uploadedFilePath = uploadDir.getAbsolutePath() + File.separator + uploadTime+"_"+uploadedFileName;

@@ -17,6 +17,7 @@ import org.springframework.data.web.SortDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -76,7 +77,7 @@ public class ShortSellController {
 	@ResponseBody
 	public ModelAndView createFormController(Model model) {
 
-		model.addAttribute("type", "POST");
+		model.addAttribute("type", "insert");
 
 		model.addAttribute("data", new ShotSellDto());
 		ModelAndView modelAndView = new ModelAndView();
@@ -91,7 +92,7 @@ public class ShortSellController {
 		ShotSellDto shotSellDto = shortSellService.getDetail(id);
 
 		model.addAttribute("data", shotSellDto);
-		model.addAttribute("type", "PUT");
+		model.addAttribute("type", "update");
 
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("sell/shortSellCreate");
@@ -154,7 +155,7 @@ public class ShortSellController {
 		return map;
 	}
 
-	@PutMapping("/insert")
+	@PostMapping("/update")
 	@ResponseBody
 	public Map<String,Object> updateController(@ModelAttribute ShotSellDto shotSellDto, MultipartHttpServletRequest req){
 
@@ -233,6 +234,7 @@ public class ShortSellController {
 
 		String fileUrl = "";
 
+		MultipartFile file = req.getFile(tagName);
 		Part part = req.getPart(tagName);
 
 		if (part != null && part.getSize() > 0) {
@@ -243,7 +245,8 @@ public class ShortSellController {
 				uploadDir.mkdirs();
 			}
 
-			String uploadedFileName = part.getSubmittedFileName();
+			String fileName = file.getOriginalFilename();
+			String uploadedFileName = fileName.substring(fileName.lastIndexOf("\\")+1);
 			String uploadedFilePath = uploadDir.getAbsolutePath() + File.separator + uploadedFileName;
 
 			part.write(uploadedFilePath);

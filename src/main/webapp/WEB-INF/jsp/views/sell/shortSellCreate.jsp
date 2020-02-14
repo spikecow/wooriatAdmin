@@ -36,6 +36,7 @@
 
 <!-- jQuery 2.1.4 -->
 <script src="/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+<script src="/plugins/jQuery/jquery.form.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.js"></script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
@@ -64,7 +65,7 @@
             </section>
         <!-- Main content -->
         <section class="content">
-            <form id="form" enctype="multipart/form-data">
+            <form id="form" enctype="multipart/form-data" action="/ShortSell/${type}" method="POST">
                 <input type="hidden" name="sellId" id="sellId" value="${data.sellId}"/>
             <div class="row">
                 <div class="col-xs-12">
@@ -227,8 +228,8 @@
             </div>
             <div class="row">
                 <div class="col-sm-12 text-right">
-                    <button name="btnCancel" type="button" class="btn btn-info btn-group-sm" data-id="${ data.sellId }" >취소</button>
-                    <button name="btnRegist" type="submit" class="btn btn-info btn-group-sm" >등록</button>
+                    <button id="btnCancel" type="button" class="btn btn-info btn-group-sm" data-id="${ data.sellId }" >취소</button>
+                    <button id="btnRegist" type="submit" class="btn btn-info btn-group-sm" >등록</button>
                 </div>
             </div>
 
@@ -256,6 +257,32 @@
 
         var type = '${type}';
 
+        $("#form").ajaxForm({
+            dataType:'json',
+            cache: false,
+            processData: false,
+            contentType: false,
+            success : function(result) {
+
+                if (result.status == 'fail') {
+                    alert('등록하지 못했습니다.[' + result.errorMsg + ']\n반복 시 관리자에게 문의 바랍니다.');
+                    return false;
+                }
+
+                alert('등록 되었습니다.');
+                if(type == 'update'){
+                    location.href = "/ShortSell/detail/"+result.sellId;
+                }else{
+                    location.href = "/ShortSell/list/";
+                }
+            },
+            error : function(jqXHR) {
+                console.log(jqXHR);
+                alert('error');
+            }
+
+        });
+/*
         $('#form').on('submit', function () {
 
             if(!valCheck('#newsTitle', '제목을 입력해주세요')){
@@ -265,6 +292,9 @@
             if(!valCheck('#regDateInput', '등록일을 입력해주세요')){
                 return false;
             }
+
+
+
 
             var reqData = new FormData(this);
 
@@ -301,8 +331,9 @@
                 }
             });
 
+
             return false;
-        });
+        });*/
 
         /* Validation Check */
         function valCheck(id, msg){
@@ -314,7 +345,7 @@
             return true;
         }
 
-        $('button[name=btnCancel]').on('click', function () {
+        $('button[id=btnCancel]').on('click', function () {
             if(type == 'POST'){
                 location.href = "/ShortSell/list/";
             }else{

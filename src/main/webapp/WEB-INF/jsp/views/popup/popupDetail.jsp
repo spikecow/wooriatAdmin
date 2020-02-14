@@ -121,7 +121,7 @@
                                                 <c:out value="${data.popupText}" escapeXml="false"/>
                                             </c:if>
                                             <c:if test="${data.popupType eq 'I'.toString()}">
-                                                <img src="/uploads/popup/${data.popupImg}" />
+                                                <img src="http://images.wooriat.com/popup/${data.popupImg}" />
                                             </c:if>
                                         </td>
                                     </tr>
