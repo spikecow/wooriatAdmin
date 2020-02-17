@@ -51,19 +51,19 @@ public class ShotSell {
 	@Column(name = "news_pub_date", length = 100)
 	private String newsPubDate;
 
-	@Column(name = "insertFile1", length = 100)
+	@Column(name = "insertFile1", length = 1000)
 	private String insertFile1;
 
-	@Column(name = "insertFile2", length = 100)
+	@Column(name = "insertFile2", length = 1000)
 	private String insertFile2;
 
-	@Column(name = "insertFile3", length = 100)
+	@Column(name = "insertFile3", length = 1000)
 	private String insertFile3;
 
-	@Column(name = "insertFile4", length = 100)
+	@Column(name = "insertFile4", length = 1000)
 	private String insertFile4;
 
-	@Column(name = "insertFile5", length = 100)
+	@Column(name = "insertFile5", length = 1000)
 	private String insertFile5;
 
 	@OneToOne(fetch = FetchType.LAZY)

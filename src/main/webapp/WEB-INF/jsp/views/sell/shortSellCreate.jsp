@@ -65,7 +65,7 @@
             </section>
         <!-- Main content -->
         <section class="content">
-            <form id="form" enctype="multipart/form-data" action="/ShortSell/${type}" method="POST">
+            <form id="form" enctype="multipart/form-data" action="/ShortSell/${type}" method="POST" accept-charset="UTF-8">
                 <input type="hidden" name="sellId" id="sellId" value="${data.sellId}"/>
             <div class="row">
                 <div class="col-xs-12">
@@ -346,11 +346,11 @@
         }
 
         $('button[id=btnCancel]').on('click', function () {
-            if(type == 'POST'){
+            //if(type == 'POST'){
                 location.href = "/ShortSell/list/";
-            }else{
+            /*}else{
                 location.href = "/ShortSell/detail/"+$(this).attr('data-id');
-            }
+            }*/
         });
 
         $("input[type=file]").on('change', function() {

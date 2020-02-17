@@ -1,6 +1,7 @@
 package com.wooriat.admin.controller;
 
 import com.wooriat.admin.common.utility.SessionUtil;
+import com.wooriat.admin.common.utility.StringUtil;
 import com.wooriat.admin.constant.AdminConst;
 import com.wooriat.admin.domain.ShotSell;
 import com.wooriat.admin.domain.TbUser;
@@ -232,6 +233,7 @@ public class ShortSellController {
 	public String getUploadFileUrl(MultipartHttpServletRequest req,
 								   String tagName, String urlPath ) throws IOException, ServletException {
 
+		req.setCharacterEncoding("UTF-8");
 		String fileUrl = "";
 
 		MultipartFile file = req.getFile(tagName);
@@ -245,7 +247,8 @@ public class ShortSellController {
 				uploadDir.mkdirs();
 			}
 
-			String fileName = file.getOriginalFilename();
+			//String fileName =  new String(file.getOriginalFilename().getBytes("8859_1"),"UTF-8");
+			String fileName =  file.getOriginalFilename();
 			String uploadedFileName = fileName.substring(fileName.lastIndexOf("\\")+1);
 			String uploadedFilePath = uploadDir.getAbsolutePath() + File.separator + uploadedFileName;
 

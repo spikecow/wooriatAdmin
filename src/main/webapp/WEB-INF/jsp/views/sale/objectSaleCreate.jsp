@@ -635,11 +635,11 @@
         }
 
         $('button[name=btnCancel]').on('click', function () {
-            if(type == 'POST'){
+            //if(type == 'POST'){
                 location.href = "/SaleItem/list/";
-            }else{
+            /*}else{
                 location.href = "/SaleItem/detail/"+$(this).attr('data-id');
-            }
+            }*/
         });
 
         $("input[type=file]").on('change', function() {
