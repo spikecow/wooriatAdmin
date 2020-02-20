@@ -303,7 +303,7 @@
             nhn.husky.EZCreator.createInIFrame({
                 oAppRef: oEditors,
                 elPlaceHolder: "popupText",
-                sSkinURI: "/se2/SmartEditor2Skin.html",
+                sSkinURI: "/se2/SmartEditor2Skin_notphoto.html",
                 htParams : {
                     SE_EditingAreaManager: {
                         sDefaultEditingMode : "WYSIWYG"	// 로딩 시 디폴트 편집 모드를 설정 Editor로 설정

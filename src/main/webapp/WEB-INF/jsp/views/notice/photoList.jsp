@@ -110,7 +110,7 @@
                                 <c:forEach items="${list.content}" var="list" varStatus="status">
                                     <tr class="text-center">
                                         <td>${(totalCount - status.index) - ( (page - 1)  *  10 ) }</td>
-                                        <td><c:if test="${list.img != null && list.img ne ''}"><img src="http://images.wooriat.com/Photo/${list.img}"></c:if></td>
+                                        <td><c:if test="${list.img != null && list.img ne ''}"><img src="http://images.wooriat.com/Photo/${list.img}" width="120px" height="80px"></c:if></td>
                                         <td style = "cursor:pointer;" onClick = "location.href='/notice/updateForm/${ list.seqNo }/${menuCd}'">${list.title}</td>
                                         <td>${list.userInfo.userNm}</td>
                                         <td>

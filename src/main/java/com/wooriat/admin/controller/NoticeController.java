@@ -23,12 +23,15 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 @Slf4j
@@ -283,6 +286,62 @@ public class NoticeController {
 
 		}
 		return fileUrl;
+	}
+
+
+	@PostMapping("/fileinsert")
+	public void prImgInsert(MultipartHttpServletRequest multipartHttpServletRequest, HttpServletResponse response) throws Exception{
+		log.info("fileinsert! - Start");
+
+		Iterator<String> iterator = multipartHttpServletRequest.getFileNames();
+
+		MultipartFile multipartFile = null;
+		String fileName = "";
+		String returnUrl = "";
+		String sFileInfo = "";
+
+		if(iterator.hasNext()) {
+			log.info("iterator Exsit");
+			File uploadDir = new File("D:"+File.separator+"WEBSERVICE"+File.separator+"wooriAtUploadFiles"+File.separator+"Photo");
+
+			if(!uploadDir.exists()) {
+				uploadDir.mkdirs();
+			}
+
+			multipartFile = multipartHttpServletRequest.getFile(iterator.next());
+			LocalDateTime localDate = LocalDateTime.now();
+			String uploadTime = localDate.format(DateTimeFormatter.ofPattern("yyyyMMddHHmmssSSS"));
+			fileName = multipartFile.getOriginalFilename();
+
+			//IE 같은 경우 fileName 이 전체 경로로 들어옴
+			fileName = fileName.substring(fileName.lastIndexOf('\\')+1);
+
+			//String uploadedFilePath = uploadDir.getAbsolutePath() + File.separator + uploadTime+"_"+fileName;
+			String uploadedFilePath = uploadDir.getAbsolutePath() + File.separator + uploadTime+"_"+fileName;
+
+			log.info("fileName : {}", fileName);
+
+			File tempFile = new File(uploadedFilePath);
+
+			multipartFile.transferTo(tempFile);
+
+			String uploadFileUrl = "http://images.wooriat.com/Photo/"+uploadTime+"_"+fileName;
+
+			returnUrl = uploadFileUrl;
+
+		}
+
+		log.info("return Url : {}" , returnUrl);
+
+		sFileInfo += "&bNewLine=true";
+		// img 태그의 title 속성을 원본파일명으로 적용시켜주기 위함
+		sFileInfo += "&sFileName="+ fileName;;
+		sFileInfo += "&sFileURL="+returnUrl;
+		PrintWriter print = response.getWriter();
+		print.print(sFileInfo);
+		print.flush();
+		print.close();
+
 	}
 
 }
