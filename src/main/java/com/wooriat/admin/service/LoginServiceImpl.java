@@ -72,6 +72,42 @@ public class LoginServiceImpl implements LoginService {
 		returnMap.put("status", "success");
 		returnMap.put("msg", "로그인 성공!");
 
+		String url = "/myinfo/check";
+
+		if(user.getAuthCd().getValue().equals("S")){
+			url = "/user/list";
+		}else{
+			for(Long menuId:sessionVo.getMenuId()){
+				if(menuId == 5){ // 메인 팝업 관리
+					url = "/popup/list";
+					break;
+				}else if(menuId == 6){ // 경영현황
+					url = "/notice/list?menuCd=M";
+					break;
+				}else if(menuId == 7){ // 회사소식
+					url = "/notice/list?menuCd=C";
+					break;
+				}else if(menuId == 8){ // Photo소식
+					url = "/notice/list?menuCd=P";
+					break;
+				}else if(menuId == 9){ // 사회공헌
+					url = "/notice/list?menuCd=S";
+					break;
+				}else if(menuId == 10){ // 분양물건정보
+					url = "/SaleItem/list";
+					break;
+				}else if(menuId == 11){ // 공매물건정보
+					url = "/ShortSell/list";
+					break;
+				}else if(menuId == 12){ // 고객문의
+					url = "/qa/list";
+					break;
+				}
+			}
+		}
+
+		returnMap.put("url", url);
+
 		adminInfoSetSessionAttr(sessionVo, httpSvltReq);
 		return  returnMap;
 

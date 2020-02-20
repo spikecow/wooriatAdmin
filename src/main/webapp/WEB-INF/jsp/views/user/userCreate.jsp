@@ -200,14 +200,18 @@
                 return false;
             }
 
-            if(!valCheck('#userPwd', '비밀번호를 입력해주세요')){
-                return false;
+            if(type == 'POST') {
+                if (!valCheck('#userPwd', '비밀번호를 입력해주세요')) {
+                    return false;
+                }
             }
 
-            var pwdCheck = /^.*(?=^.{8,30}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
-            if(!pwdCheck.test($('#userPwd').val()) ) {
-                alert("비밀번호는 영문,숫자,특수문자를 혼용하여 8자 이상 입력해주세요.");
-                return false;
+            if($('#userPwd').val() != ''){
+                var pwdCheck = /^.*(?=^.{8,30}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
+                if(!pwdCheck.test($('#userPwd').val()) ) {
+                    alert("비밀번호는 영문,숫자,특수문자를 혼용하여 8자 이상 입력해주세요.");
+                    return false;
+                }
             }
 
             var reqData = new FormData(this);

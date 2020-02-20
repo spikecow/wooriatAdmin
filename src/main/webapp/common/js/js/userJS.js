@@ -56,7 +56,7 @@ function loginCallback(data) {
 		// 	window.location.href = data.returnUrl;
 		// }
 
-		window.location.href = "/";
+		window.location.href = data.url;
 		// if (/^cs\-/.test(data.userId)) {
 		// 	window.location.href = "/member/memberList";
 		// } else if ('onair' == data.userId) {
