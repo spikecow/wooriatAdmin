@@ -63,7 +63,7 @@ pageContext.setAttribute("LF", "\n");
     <%@ include file="../layout/leftMenu.jsp"%>
     <div class="content-wrapper">
         <section class="content-header">
-            <h1>포토소식 관리</h1>
+            <h1>사회공헌 관리</h1>
         </section>
         <!-- Main content -->
         <section class="content">
