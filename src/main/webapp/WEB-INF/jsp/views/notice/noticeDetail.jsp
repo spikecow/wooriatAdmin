@@ -86,7 +86,6 @@
                                                 <option value="02" <c:if test="${data.typeCd eq '02'.toString()}">selected</c:if>>영업보고</option>
                                                 <option value="03" <c:if test="${data.typeCd eq '03'.toString()}">selected</c:if>>영업순자본비</option>
                                                 <option value="04" <c:if test="${data.typeCd eq '04'.toString()}">selected</c:if>>감사보고서</option>
-                                                <option value="05" <c:if test="${data.typeCd eq '05'.toString()}">selected</c:if>>(구)경영공시</option>
                                                 <option value="06" <c:if test="${data.typeCd eq '06'.toString()}">selected</c:if>>약관공시</option>
                                             </select>
                                         </td>
