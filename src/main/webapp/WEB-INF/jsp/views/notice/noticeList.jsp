@@ -81,7 +81,6 @@
                                     <option value="02">영업보고</option>
                                     <option value="03">영업순자본비율</option>
                                     <option value="04">감사보고서</option>
-                                    <option value="05">(구)경영공시</option>
                                     <option value="06">약관공시</option>
                                 </select>
                                 <input style="width: 400px;" type="text" id="searchWord" name="searchWord" class="form-control" placeholder="검색어를 입력해 주세요." />
