@@ -65,7 +65,7 @@
         <%@ include file="../layout/leftMenu.jsp"%>
         <div class="content-wrapper">
             <section class="content-header">
-                <h1>포토소식 관리</h1>
+                <h1>Photo소식 목록</h1>
             </section>
         <!-- Main content -->
         <section class="content">
@@ -110,12 +110,27 @@
                                 <c:forEach items="${list.content}" var="list" varStatus="status">
                                     <tr class="text-center">
                                         <td>${(totalCount - status.index) - ( (page - 1)  *  10 ) }</td>
-                                        <td><c:if test="${list.img != null && list.img ne ''}"><img src="http://images.wooriat.com/Photo/${list.img}" width="120px" height="80px"></c:if></td>
-                                        <td style = "cursor:pointer;" onClick = "location.href='/notice/updateForm/${ list.seqNo }/${menuCd}'">${list.title}</td>
+                                        <td>
+                                            <c:if test="${list.img != null && list.img ne ''}">
+                                                <a href="http://images.wooriat.com/Photo/${list.img}" target="_blank">
+                                                    <img src="http://images.wooriat.com/Photo/${list.img}" width="120px" height="80px">
+                                                </a>
+                                            </c:if>
+                                        </td>
+                                        <td style = "cursor:pointer;" onClick = "location.href='/notice/detail/${ list.seqNo }/${menuCd}'">${list.title}</td>
+                                        <td>
+                                            <fmt:parseDate value="${ list.strtDt }" pattern="yyyy-MM-dd'T'HH:mm" var="strtDt" type="both" />
+                                            <fmt:formatDate pattern="yyyy.MM.dd" value="${ strtDt }" />
+                                            <c:if test="${not empty list.endDt}">
+                                                &nbsp;~&nbsp;
+                                                <fmt:parseDate value="${ list.endDt }" pattern="yyyy-MM-dd'T'HH:mm" var="endDt" type="both" />
+                                                <fmt:formatDate pattern="yyyy.MM.dd" value="${ endDt }" />
+                                            </c:if>
+                                        </td>
                                         <td>${list.userInfo.userNm}</td>
                                         <td>
-                                            <fmt:parseDate value="${ list.cretDtm }" pattern="yyyy-MM-dd'T'HH:mm" var="cretDtm" type="both" />
-                                            <fmt:formatDate pattern="yyyy-MM-dd" value="${ cretDtm }" />
+                                            <fmt:parseDate value="${ list.regDate }" pattern="yyyy-MM-dd'T'HH:mm" var="regDate" type="both" />
+                                            <fmt:formatDate pattern="yyyy-MM-dd" value="${ regDate }" />
                                         </td>
                                     </tr>
                                 </c:forEach>

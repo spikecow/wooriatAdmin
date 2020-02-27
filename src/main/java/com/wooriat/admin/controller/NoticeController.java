@@ -98,8 +98,9 @@ public class NoticeController {
 
 		model.addAttribute("type", "POST");
 		model.addAttribute("menuCd", (String) menuCd);
-
+		model.addAttribute("data", new NoticeDto());
 		ModelAndView modelAndView = new ModelAndView();
+
 
 		if(StringUtils.equals(menuCd, "M")){
 			modelAndView.setViewName("notice/noticeCreate");
@@ -223,16 +224,29 @@ public class NoticeController {
 		return map;
 	}
 
-	@GetMapping("/detail/{id}")
+	@GetMapping("/detail/{id}/{menuCd}")
 	@ResponseBody
-	public ModelAndView detailController(Model model, @PathVariable Long id) throws Exception {
+	public ModelAndView detailController(Model model, @PathVariable Long id, @PathVariable String menuCd) throws Exception {
 
 		NoticeDto noticeDto = noticeService.getDetail(id);
 
 		model.addAttribute("data", noticeDto);
+		model.addAttribute("type", "PUT");
 
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("notice/noticeDetail");
+
+		if(StringUtils.equals(menuCd, "M")){
+			modelAndView.setViewName("notice/noticeDetail");
+		}
+		else if(StringUtils.equals(menuCd, "C")){
+			modelAndView.setViewName("notice/companyDetail");
+		}
+		else if(StringUtils.equals(menuCd, "P")){
+			modelAndView.setViewName("notice/photoDetail");
+		}
+		else if(StringUtils.equals(menuCd, "S")){
+			modelAndView.setViewName("notice/socialDetail");
+		}
 		return modelAndView;
 	}
 

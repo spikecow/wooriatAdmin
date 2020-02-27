@@ -108,9 +108,9 @@
                                 <c:forEach items="${list.content}" var="list" varStatus="status">
                                     <tr class="text-center">
                                         <td>${(totalCount - status.index) - ( (page - 1)  *  10 ) }</td>
-                                        <td style = "cursor:pointer;" onClick = "location.href='/notice/updateForm/${ list.seqNo }/${menuCd}'">${list.title}</td>
+                                        <td style = "cursor:pointer;" onClick = "location.href='/notice/detail/${ list.seqNo }/${menuCd}'">${list.title}</td>
                                         <td>
-                                            <c:if test="${list.img != null && list.img ne ''}"><button class="btn-file">파일</button></c:if>
+                                            <c:if test="${list.img != null && list.img ne ''}"><i class="fa fa-file-archive-o"></i></c:if>
                                         </td>
                                         <td>${list.userInfo.userNm}</td>
                                         <td>

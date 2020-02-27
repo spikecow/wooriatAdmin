@@ -99,12 +99,6 @@ pageContext.setAttribute("LF", "\n");
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th class="text-center">내용</th>
-                                            <td>
-                                                <textarea name="content" id="content" style="width:100%; height:280px; display:none;"></textarea>
-                                            </td>
-                                        </tr>
-                                        <tr>
                                             <th class="text-center">이미지</th>
                                             <td>
                                                 <input type="hidden" name="imgTitle1" value="리스트용 이미지">
@@ -122,6 +116,13 @@ pageContext.setAttribute("LF", "\n");
                                                 <c:if test="${data.img != null && data.img ne ''}">현재 업로드 파일 : ${data.img}</c:if>
                                             </td>
                                         </tr>
+                                        <tr>
+                                            <th class="text-center">내용</th>
+                                            <td>
+                                                <textarea name="content" id="content" style="width:100%; height:280px; display:none;"></textarea>
+                                            </td>
+                                        </tr>
+
                                     </tbody>
                                 </table>
                             </div>

@@ -109,7 +109,7 @@
                                     <tr class="text-center">
                                         <td>${(totalCount - status.index) - ( (page - 1)  *  10 ) }</td>
                                         <td><c:if test="${list.img != null && list.img ne ''}"><img src="http://images.wooriat.com/Social/${list.img}"></c:if></td>
-                                        <td style = "cursor:pointer;" onClick = "location.href='/notice/updateForm/${ list.seqNo }/${menuCd}'">${list.title}</td>
+                                        <td style = "cursor:pointer;" onClick = "location.href='/notice/detail/${ list.seqNo }/${menuCd}'">${list.title}</td>
                                         <td>${list.userInfo.userNm}</td>
                                         <td>
                                             <fmt:parseDate value="${ list.cretDtm }" pattern="yyyy-MM-dd'T'HH:mm" var="cretDtm" type="both" />

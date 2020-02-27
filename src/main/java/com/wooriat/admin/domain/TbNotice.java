@@ -63,8 +63,7 @@ public class TbNotice {
     private String img; // 리스트용 이미지 제목
 
     @Column(name = "reg_date")
-    @CreationTimestamp
-    private LocalDateTime regDate; // 등록일
+    private LocalDateTime regDate; // 등록일 지정
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="uid")

@@ -65,7 +65,7 @@
         <%@ include file="../layout/leftMenu.jsp"%>
         <div class="content-wrapper">
             <section class="content-header">
-                <h1>경영현황 관리</h1>
+                <h1>경영현황 목록</h1>
             </section>
         <!-- Main content -->
         <section class="content">
@@ -128,9 +128,9 @@
                                             <c:if test="${list.typeCd eq '05'.toString()}">(구)경영공시</c:if>
                                             <c:if test="${list.typeCd eq '06'.toString()}">약관공시</c:if>
                                         </td>
-                                        <td style = "cursor:pointer;" onClick = "location.href='/notice/updateForm/${ list.seqNo }/${menuCd}'">${list.title}</td>
+                                        <td style = "cursor:pointer;" onClick = "location.href='/notice/detail/${ list.seqNo }/${menuCd}'">${list.title}</td>
                                         <td>
-                                            <c:if test="${list.img != null && list.img ne ''}"><button class="btn-file">파일</button></c:if>
+                                            <c:if test="${list.img != null && list.img ne ''}"><i class="fa fa-file-pdf-o"></i></c:if>
                                         </td>
                                         <td>${list.userInfo.userNm}</td>
                                         <td>

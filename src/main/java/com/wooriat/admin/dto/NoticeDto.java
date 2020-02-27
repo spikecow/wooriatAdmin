@@ -22,7 +22,7 @@ public class NoticeDto {
     private LocalDateTime mdfyDtm;
     private String img;
     private LocalDateTime regDate;
-    private String regDateInput;
+    private String regDateInput = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
     private TbUser userInfo;
     private String startDate;
     private String endDate;
@@ -55,6 +55,10 @@ public class NoticeDto {
                 .regDate(this.regDate)
                 .userInfo(this.userInfo)
                 .build();
+    }
+
+    public NoticeDto(){
+
     }
 
     public NoticeDto(Optional<TbNotice> tbNotice) {

@@ -138,7 +138,6 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-12 text-right">
-                        <c:if test="${ data.seqNo > 0}"><button name="btnDelete" type="button" class="btn btn-danger btn-group-sm" data-id="${ data.seqNo }" >삭제</button></c:if>
                         <button name="btnCancel" type="button" class="btn btn-default btn-group-sm" data-id="${ data.seqNo }" >취소</button>
                         <button name="btnRegist" type="submit" class="btn btn-info btn-group-sm" >등록</button>
                     </div>
@@ -247,36 +246,6 @@
         $("input[type=file]").on('change', function() {
             fileNameAtTarget(this);
         });
-
-        $('button[name=btnDelete]').on('click', function () {
-            $.ajax({
-                url : '/notice/delete/'+$(this).attr('data-id'),
-                async: true,
-                cache: false,
-                contentType: 'application/json',
-                type : 'DELETE',
-                processData: false,
-                contentType: false,
-                success : function(data){
-                }, error : function(error){
-
-                }
-            }).done(function (result) {
-
-                if (result.status == 'fail') {
-                    alert('삭제하지 못했습니다.[' + result.errorMsg + ']\n반복 시 관리자에게 문의 바랍니다.');
-                    return false;
-                }
-
-                alert('삭제 되었습니다.');
-                location.href = "/notice/list?menuCd=${menuCd}";
-            }).fail(function(xhr, textStatus, errorThrown) {
-                if(xhr.status =='403'){
-                    alert("해당 기능에 대한 권한이 없습니다.");
-                }
-            });
-        });
-
 
     </script>
 

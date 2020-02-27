@@ -3,8 +3,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-
-
+<%
+pageContext.setAttribute("CR", "\r");
+pageContext.setAttribute("LF", "\n");
+%>
+<c:set var="contents" value="${fn:replace(fn:replace(data.content, LF, ''), CR, '')}" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -60,7 +63,7 @@
     <%@ include file="../layout/leftMenu.jsp"%>
     <div class="content-wrapper">
         <section class="content-header">
-            <h1>경영현황</h1>
+            <h1>사회공헌 관리</h1>
         </section>
         <!-- Main content -->
         <section class="content">
@@ -78,37 +81,31 @@
                                         <col width="*">
                                     </colgroup>
                                     <tbody>
-                                    <tr>
-                                        <th class="text-center">분류</th>
-                                        <td>
-                                           <c:if test="${data.typeCd eq '01'.toString()}">수시공시</c:if>
-                                           <c:if test="${data.typeCd eq '02'.toString()}">영업보고</c:if>
-                                           <c:if test="${data.typeCd eq '03'.toString()}">영업순자본비</c:if>
-                                           <c:if test="${data.typeCd eq '04'.toString()}">감사보고서</c:if>
-                                           <c:if test="${data.typeCd eq '05'.toString()}">경영공시</c:if>
-                                           <c:if test="${data.typeCd eq '06'.toString()}">약관공시</c:if>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <th class="text-center">제목</th>
-                                        <td>
-                                           ${data.title}
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <th class="text-center">등록일</th>
-                                        <td>
-                                            ${data.regDateInput}
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th class="text-center">파일첨부</th>
-                                        <td>
-                                            <a href="http://images.wooriat.com/Government/${data.img}" target="_blank">${data.img}</a>
-                                        </td>
-                                    </tr>
+                                        <tr>
+                                            <th class="text-center">제목</th>
+                                            <td>
+                                                ${data.title}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th class="text-center">등록일</th>
+                                            <td>
+                                                ${data.regDateInput}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th class="text-center">이미지</th>
+                                            <td>
+                                               <a href="http://images.wooriat.com/Social/${data.img}" target="_blank">${data.img}</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th class="text-center">내용</th>
+                                            <td>
+                                                <img src="http://images.wooriat.com/Social/${data.img}"/><br>
+                                                <c:out value="${data.content}" escapeXml="false"/>
+                                            </td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -130,49 +127,48 @@
         </section>
     </div>
     <script src="/common/js/js/common.js" type="text/javascript"></script>
-        <script type="text/javascript">
+    <script type="text/javascript">
+        $('button[name=btnDelete]').on('click', function () {
+            if(!confirm("정말 삭제하시겠습니까?")){
+                return false;
+            }
 
-            $('button[name=btnDelete]').on('click', function () {
-                if(!confirm("정말 삭제하시겠습니까?")){
+            $.ajax({
+                url : '/notice/delete/'+$(this).attr('data-id'),
+                async: true,
+                cache: false,
+                contentType: 'application/json',
+                type : 'DELETE',
+                processData: false,
+                contentType: false,
+                success : function(data){
+                }, error : function(error){
+
+                }
+            }).done(function (result) {
+
+                if (result.status == 'fail') {
+                    alert('삭제하지 못했습니다.[' + result.errorMsg + ']\n반복 시 관리자에게 문의 바랍니다.');
                     return false;
                 }
 
-                $.ajax({
-                    url : '/notice/delete/'+$(this).attr('data-id'),
-                    async: true,
-                    cache: false,
-                    contentType: 'application/json',
-                    type : 'DELETE',
-                    processData: false,
-                    contentType: false,
-                    success : function(data){
-                    }, error : function(error){
-
-                    }
-                }).done(function (result) {
-
-                    if (result.status == 'fail') {
-                        alert('삭제하지 못했습니다.[' + result.errorMsg + ']\n반복 시 관리자에게 문의 바랍니다.');
-                        return false;
-                    }
-
-                    alert('삭제 되었습니다.');
-                    location.href = "/notice/list?menuCd=${menuCd}";
-                }).fail(function(xhr, textStatus, errorThrown) {
-                    if(xhr.status =='403'){
-                        alert("해당 기능에 대한 권한이 없습니다.");
-                    }
-                });
-            });
-
-            $('button[name=btnCreate]').on('click', function () {
-                location.href = "/notice/updateForm/"+$(this).attr('data-id')+"/${menuCd}";
-            });
-
-            $('button[name=btnList]').on('click', function () {
+                alert('삭제 되었습니다.');
                 location.href = "/notice/list?menuCd=${menuCd}";
+            }).fail(function(xhr, textStatus, errorThrown) {
+                if(xhr.status =='403'){
+                    alert("해당 기능에 대한 권한이 없습니다.");
+                }
             });
-        </script>
+        });
+
+        $('button[name=btnCreate]').on('click', function () {
+            location.href = "/notice/updateForm/"+$(this).attr('data-id')+"/${menuCd}";
+        });
+
+        $('button[name=btnList]').on('click', function () {
+            location.href = "/notice/list?menuCd=${menuCd}";
+        });
+    </script>
 
 </body>
 
