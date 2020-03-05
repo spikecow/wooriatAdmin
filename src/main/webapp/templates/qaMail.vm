@@ -1,6 +1,6 @@
 
 <b>고객 문의사항</b>
-<table style="width: 800px; border-width: 1px; border-color: black">
+<table border="1" style="width: 800px; border-width: 1px; border-color: black">
     <colgroup>
         <col width="150px">
         <col width="250px">
@@ -39,7 +39,7 @@
         </td>
     </tr>
     <tr>
-        <th style="text-align: center; vertical-align: middle">내용</th>
+        <th style="text-align: center; vertical-align: middle; height: 80px">내용</th>
         <td colspan="3">
             ${questionContent}
         </td>
@@ -47,32 +47,34 @@
 
 </table>
 
-
+<br><br>
 <b>우리자산신탁 답변</b>
-<table style="width: 800px; border-width: 1px; border-color: black">
+<table border="1" style="width: 800px; border-width: 1px; border-color: black">
     <colgroup>
         <col width="150px">
-        <col width="250px">
-        <col width="150px">
-        <col width="250px">
+        <col width="650px">
     </colgroup>
 
     <tbody>
 
     <tr>
-        <th style="text-align: center; vertical-align: middle">답변내용</th>
-        <td colspan="3">
+        <th style="text-align: center; vertical-align: middle; height: 80px">답변내용</th>
+        <td>
             ${answerContent}
         </td>
     </tr>
 
 </table>
+<br><br>
 
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+<a href="http://www.wooriat.com/" target="_blank">
+<img src="http://www.wooriat.com/images/layout/logo.png" style="background-color: #0d6aad"/>
+</a>
+
+<br><br>
 본 메일은 정보통신망 이용 촉진 및 정보보호 등에 관한 법률에 의거해, 고객문의 작성 시 제공해 주신 이메일 주소로 발송하는 발신 전용 메일 입니다.
-
-<div style="position:relative;width:800px;margin:0 auto;">
-    <div>
-        <p >주소 : (06160) 서울특별시 강남구 테헤란로 419. 강남파이낸스빌딩 20층<em>전화. 02-6202-3000</em><em>팩스. 02-6202-3010</em></p>
-        <p>COPYRIGHT © WOORI ASSET TRUST. LTD. ALL RIGHTS RESERVED</p>
-    </div>
+<div style="left: 0px; width:800px; background-color: #a8a8a8">
+    <p >주소 : (06160) 서울특별시 강남구 테헤란로 419. 강남파이낸스빌딩 20층 <em>전화. 02-6202-3000</em> <em>팩스. 02-6202-3010</em></p>
+    <p>COPYRIGHT © WOORI ASSET TRUST. LTD. ALL RIGHTS RESERVED</p>
 </div>

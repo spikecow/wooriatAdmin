@@ -72,7 +72,7 @@ public class QaController {
 		try {
 			answerDto.setUserInfo(new TbUser().builder().uid(sessionVo.getUid()).build());
 			TbAnswer tbAnswer = qaService.insert(req, answerDto);
-			//qaService.mailSend(answerDto);  // 메일 전송
+			qaService.mailSend(answerDto);  // 메일 전송
 			map.put("status", "success");
 			map.put("qid", answerDto.getQid());
 		}catch(Exception e) {

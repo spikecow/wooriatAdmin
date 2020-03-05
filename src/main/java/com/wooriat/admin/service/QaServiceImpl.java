@@ -107,7 +107,7 @@ public class QaServiceImpl implements QaService {
         velocityContext.put("questionCretDtm", questionDto.getCretDtm().format(DateTimeFormatter.ofPattern("yyyy.MM.dd")));
         velocityContext.put("answerContent", answerDto.getContent().replaceAll("\n","<br>"));
 
-        mailUtil.sendMail(questionDto.getEmail(), "webplanner@wooriat.com","답변] "+questionDto.getTitle()
+        mailUtil.sendMail(questionDto.getEmail(), "webplanner@wooriat.com","[우리자산신탁] 문의하신 내용에 답변드립니다."
                 ,"", "Y", velocityContext, "qaMail");
 
     }

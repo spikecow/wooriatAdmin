@@ -298,9 +298,17 @@
             });
         });
 
+        var flag = true;
         $('#form').on('submit', function () {
 
             if(!valCheck('#content', '답변내용을 입력해주세요')){
+                return false;
+            }
+
+            if(flag){
+                flag = false;
+            }else{
+                alert('답변 등록 및 메일전송 중입니다.');
                 return false;
             }
 
@@ -320,7 +328,7 @@
 
                 }
             }).done(function (result) {
-
+                flag = true;
                 if (result.status == 'fail') {
                     alert('등록하지 못했습니다.[' + result.errorMsg + ']\n반복 시 관리자에게 문의 바랍니다.');
                     return false;
@@ -330,6 +338,7 @@
                 location.href = "/qa/detail/"+result.qid;
 
             }).fail(function(xhr, textStatus, errorThrown) {
+                flag = true;
                 if(xhr.status =='403'){
                     alert("해당 기능에 대한 권한이 없습니다.");
                 }

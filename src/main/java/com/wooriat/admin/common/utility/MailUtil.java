@@ -27,7 +27,7 @@ public class MailUtil {
         MimeMessage message = javaMailSender.createMimeMessage();
 
         if(templateYn != null && templateYn.equals("Y")){
-            Template template = velocityEngine.getTemplate("/src/main/webapp/templates/"+templateFileName+".vm");
+            Template template = velocityEngine.getTemplate("/src/main/webapp/templates/"+templateFileName+".vm", "UTF-8");
 
             StringWriter stringWriter = new StringWriter();
             template.merge(velocityContext, stringWriter);
