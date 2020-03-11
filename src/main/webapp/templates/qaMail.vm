@@ -1,80 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 
-<b>고객 문의사항</b>
-<table border="1" style="width: 800px; border-width: 1px; border-color: black">
-    <colgroup>
-        <col width="150px">
-        <col width="250px">
-        <col width="150px">
-        <col width="250px">
-    </colgroup>
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <meta property="og:title" content="우리자산신탁" />
+    <title>우리자산신탁</title>
+</head>
 
-    <tbody>
+<body>
 
+<table width="718px" border="0" cellpadding="0" cellspacing="0" style="-ms-text-size-adjust: 100%; -ms-word-break: normal; -webkit-text-size-adjust: 100%; border-collapse: collapse !important; height: 100% !important; margin: 0 auto; mso-table-lspace: 0pt; mso-table-rspace: 0pt; padding: 0; margin:0 auto; border:1px solid #ebebeb;">
+    <!-- logo -->
     <tr>
-        <th style="text-align: center">이름</th>
-        <td>
-            ${questionName}
+        <td style="-ms-word-break: normal; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; vertical-align: middle; width:30px"></td>
+        <td style="-ms-word-break: normal; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; vertical-align: middle; padding:41px 0 41px 0; text-align: center; border-bottom: 1px solid #e5e5e5;">
+            <img src="http://images.wooriat.com/mail/logo.jpg" alt="우리자산신탁">
         </td>
-        <th style="text-align: center">등록일</th>
-        <td>
-            ${questionCretDtm}
+        <td style="-ms-word-break: normal; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; vertical-align: middle; width:30px"></td>
+    </tr>
+    <!-- //logo -->
+
+    <!-- 고객 문의사항 -->
+    <tr>
+        <td style="-ms-word-break: normal; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; vertical-align: middle; width:30px"></td>
+        <td style="-ms-word-break: normal; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; vertical-align: middle; padding:27px 0 0 0">
+            <h3 style="margin: 0; padding: 20px 0 12px 0;"><img src="http://images.wooriat.com/mail/mail_text01.jpg" alt="고객 문의사항"></h3>
+            <table border="0" cellpadding="0" cellspacing="0" style="-ms-text-size-adjust: 100%; -ms-word-break: normal; -webkit-text-size-adjust: 100%; border-collapse: collapse !important; height: 100% !important; margin: 0 auto; mso-table-lspace: 0pt; mso-table-rspace: 0pt; padding: 0; width: 100% !important; border-top:3px solid #0068b8;">
+                <colgroup>
+                    <col width="20%">
+                    <col width="80%">
+                </colgroup>
+                <tr>
+                    <th style="-ms-word-break: normal; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; vertical-align: middle; padding:20px 0 20px 0; border-bottom: 1px solid #e5e5e5; font-weight: normal; font-size:15px; color: #666; font-family: 'Malgun Gothic', sans-serif; background: #f8f8f8;vertical-align: top;">
+                        이름
+                    </th>
+                    <td style="-ms-word-break: normal; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; vertical-align: middle; padding:20px 22px 20px 22px; border-bottom: 1px solid #e5e5e5; font-weight: normal; font-size:15px; color: #333; font-family: 'Malgun Gothic', sans-serif;">
+                        ${questionName}
+                    </td>
+                </tr>
+                <tr>
+                    <th style="-ms-word-break: normal; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; vertical-align: middle; padding:20px 0 20px 0; border-bottom: 1px solid #e5e5e5; font-weight: normal; font-size:15px; color: #666; font-family: 'Malgun Gothic', sans-serif; background: #f8f8f8;vertical-align: top;">
+                        등록일
+                    </th>
+                    <td style="-ms-word-break: normal; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; vertical-align: middle; padding:20px 22px 20px 22px; border-bottom: 1px solid #e5e5e5; font-weight: normal; font-size:15px; color: #333; font-family: 'Malgun Gothic', sans-serif;">
+                        ${questionCretDtm}
+                    </td>
+                </tr>
+                <tr>
+                    <th style="-ms-word-break: normal; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; vertical-align: middle; padding:20px 0 20px 0; border-bottom: 1px solid #e5e5e5; font-weight: normal; font-size:15px; color: #666; font-family: 'Malgun Gothic', sans-serif; background: #f8f8f8;vertical-align: top;">
+                        이메일
+                    </th>
+                    <td style="-ms-word-break: normal; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; vertical-align: middle; padding:20px 22px 20px 22px; border-bottom: 1px solid #e5e5e5; font-weight: normal; font-size:15px; color: #333; font-family: 'Malgun Gothic', sans-serif;">
+                        ${questionEmail}
+                    </td>
+                </tr>
+                <tr>
+                    <th style="-ms-word-break: normal; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; vertical-align: middle; padding:20px 0 20px 0; border-bottom: 1px solid #e5e5e5; font-weight: normal; font-size:15px; color: #666; font-family: 'Malgun Gothic', sans-serif; background: #f8f8f8;vertical-align: top;">
+                        전화번호
+                    </th>
+                    <td style="-ms-word-break: normal; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; vertical-align: middle; padding:20px 22px 20px 22px; border-bottom: 1px solid #e5e5e5; font-weight: normal; font-size:15px; color: #333; font-family: 'Malgun Gothic', sans-serif;">
+                        ${questionTel}
+                    </td>
+                </tr>
+                <tr>
+                    <th style="-ms-word-break: normal; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; vertical-align: middle; padding:20px 0 20px 0; border-bottom: 1px solid #e5e5e5; font-weight: normal; font-size:15px; color: #666; font-family: 'Malgun Gothic', sans-serif; background: #f8f8f8;vertical-align: top;">
+                        제목
+                    </th>
+                    <td style="-ms-word-break: normal; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; vertical-align: middle; padding:20px 22px 20px 22px; border-bottom: 1px solid #e5e5e5; font-weight: normal; font-size:15px; color: #333; font-family: 'Malgun Gothic', sans-serif;">
+                        ${questionTitle}
+                    </td>
+                </tr>
+                <tr>
+                    <th style="-ms-word-break: normal; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; vertical-align: middle; padding:20px 0 20px 0; border-bottom: 1px solid #e5e5e5; font-weight: normal; font-size:15px; color: #666; font-family: 'Malgun Gothic', sans-serif; background: #f8f8f8; vertical-align: top;">
+                        내용
+                    </th>
+                    <td style="-ms-word-break: normal; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; vertical-align: middle; padding:17px 22px 17px 22px; border-bottom: 1px solid #e5e5e5; font-weight: normal; font-size:15px; line-height: 26px; color: #333; font-family: 'Malgun Gothic', sans-serif;">
+                        ${questionContent}
+                    </td>
+                </tr>
+            </table>
+        </td>
+        <td style="-ms-word-break: normal; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; vertical-align: middle; width:30px"></td>
+    </tr>
+    <!-- //고객 문의사항 -->
+
+    <!-- 우리자산신탁 답변 -->
+    <tr>
+        <td style="-ms-word-break: normal; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; vertical-align: middle; width:30px"></td>
+        <td style="-ms-word-break: normal; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; vertical-align: middle; padding:27px 0 0 0">
+            <h3 style="margin: 0; padding: 13px 0 12px 0;"><img src="http://images.wooriat.com/mail/mail_text02.jpg" alt="우리자산신탁 답변"></h3>
+            <table border="0" cellpadding="0" cellspacing="0" style="-ms-text-size-adjust: 100%; -ms-word-break: normal; -webkit-text-size-adjust: 100%; border-collapse: collapse !important; height: 100% !important; margin: 0 auto; mso-table-lspace: 0pt; mso-table-rspace: 0pt; padding: 0; width: 100% !important; border-top:3px solid #0068b8;">
+                <colgroup>
+                    <col width="20%">
+                    <col width="80%">
+                </colgroup>
+                <tr>
+                    <th style="-ms-word-break: normal; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; vertical-align: middle; padding:20px 0 20px 0; border-bottom: 1px solid #e5e5e5; font-weight: normal; font-size:15px; color: #666; font-family: 'Malgun Gothic', sans-serif; background: #f8f8f8;vertical-align: top;">
+                        답변내용
+                    </th>
+                    <td style="-ms-word-break: normal; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; vertical-align: middle; padding:17px 22px 17px 22px; border-bottom: 1px solid #e5e5e5; font-weight: normal; font-size:15px; line-height: 26px; color: #333; font-family: 'Malgun Gothic', sans-serif;">
+                        ${answerContent}
+                    </td>
+                </tr>
+            </table>
+        </td>
+        <td style="-ms-word-break: normal; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; vertical-align: middle; width:30px"></td>
+    </tr>
+    <!-- //우리자산신탁 답변 -->
+
+    <!-- btn -->
+    <tr>
+        <td style="-ms-word-break: normal; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; vertical-align: middle; width:30px"></td>
+        <td style="-ms-word-break: normal; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; vertical-align: middle; padding:30px 0 30px 0; text-align: center;">
+            <a href="http://www.wooriat.com/"><img src="http://images.wooriat.com/mail/btn01.jpg" alt="우리자산신탁 홈페이지 바로가기"></a>
+        </td>
+        <td style="-ms-word-break: normal; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; vertical-align: middle; width:30px"></td>
+    </tr>
+    <!-- //btn -->
+
+    <!-- foot -->
+    <tr>
+        <td style="-ms-word-break: normal; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; vertical-align: middle; width:30px"></td>
+        <td style="-ms-word-break: normal; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; vertical-align: middle; padding:66px 0 17px 0; font-size:14px; line-height: 20px; color: #999;">
+            ㆍ본 메일은 정보통신망 이용 촉진 및 정보보호 등에 관한 법률에 의거해, 고객문의 작성 시 제공해 주신<br />
+            &nbsp;&nbsp;&nbsp;이메일 주소로 발송하는 <strong style="color: #f54c4c;">발신 전용 메일 입니다.</strong>
+        </td>
+        <td style="-ms-word-break: normal; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; vertical-align: middle; width:30px"></td>
+    </tr>
+    <tr>
+        <td colspan="3" style="-ms-word-break: normal; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; vertical-align: middle; padding:25px 0 25px 40px; text-align: center; background-color: #3d3d3d; font-size:13px; line-height: 22px; color: #999999; text-align: left;">
+            (06160) 서울특별시 강남구 테헤란로 419. 강남파이낸스빌딩 20층 | 전화. 02-6202-3000 | 팩스. 02-6202-3010<br />
+            Copyright © Woori Asset Trust. Ltd. All rights reserved
         </td>
     </tr>
-
-    <tr>
-        <th style="text-align: center">이메일</th>
-        <td>
-            ${questionEmail}
-        </td>
-        <th style="text-align: center">전화번호</th>
-        <td>
-            ${questionTel}
-        </td>
-    </tr>
-
-    <tr>
-        <th style="text-align: center">제목</th>
-        <td colspan="3">
-            ${questionTitle}
-        </td>
-    </tr>
-    <tr>
-        <th style="text-align: center; vertical-align: middle; height: 80px">내용</th>
-        <td colspan="3">
-            ${questionContent}
-        </td>
-    </tr>
+    <!-- //foot -->
 
 </table>
+</body>
 
-<br><br>
-<b>우리자산신탁 답변</b>
-<table border="1" style="width: 800px; border-width: 1px; border-color: black">
-    <colgroup>
-        <col width="150px">
-        <col width="650px">
-    </colgroup>
-
-    <tbody>
-
-    <tr>
-        <th style="text-align: center; vertical-align: middle; height: 80px">답변내용</th>
-        <td>
-            ${answerContent}
-        </td>
-    </tr>
-
-</table>
-<br><br>
-
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-<a href="http://www.wooriat.com/" target="_blank">
-<img src="http://www.wooriat.com/images/layout/logo.png" style="background-color: #0d6aad"/>
-</a>
-
-<br><br>
-본 메일은 정보통신망 이용 촉진 및 정보보호 등에 관한 법률에 의거해, 고객문의 작성 시 제공해 주신 이메일 주소로 발송하는 발신 전용 메일 입니다.
-<div style="left: 0px; width:800px; background-color: #a8a8a8">
-    <p >주소 : (06160) 서울특별시 강남구 테헤란로 419. 강남파이낸스빌딩 20층 <em>전화. 02-6202-3000</em> <em>팩스. 02-6202-3010</em></p>
-    <p>COPYRIGHT © WOORI ASSET TRUST. LTD. ALL RIGHTS RESERVED</p>
-</div>
+</html>
